@@ -1,0 +1,11 @@
+#!/bin/bash
+
+TOKEN=
+USER_ID=
+
+BASE_URL="http://localhost:3000"
+URL="${BASE_URL}/sign-out"
+
+
+# data output from curl doesn't have a trailing newline
+echo

@@ -4,6 +4,16 @@
       <title>Example</title>
     </head>
     <body>
+      <form id="sign-up">
+        <p>Sign up!</p>
+        <label>E-mail
+          <input type="text" name="credentials[email]" value="">
+        </label>
+        <label>Password
+          <input type="password" name="credentials[password]" value="">
+        </label>
+        <input type="submit" name="submit" value="Sign Up">
+      </form>
       <script src="http://localhost:8080/webpack-dev-server.js"></script>
       <script src="vendor.bundle.js" type="text/javascript" charset="utf-8"></script>
       <script src="bundle.js" type="text/javascript" charset="utf-8"></script>
