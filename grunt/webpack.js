@@ -1,13 +1,14 @@
 'use strict';
 
-var webpack = require('webpack');
+let webpack = require('webpack');
+let path = require('path');
 
 module.exports = {
   options: {
     entry: {
       bundle: './index.js',
       specs: './spec/_all.js',
-      vendor: ['jquery'],
+      vendor: ['jquery', 'bootstrap-sass'],
     },
 
     output: {
@@ -23,6 +24,7 @@ module.exports = {
         "window.jQuery": "jquery"
       })
     ],
+
     module: {
       loaders: [
         {
@@ -33,7 +35,32 @@ module.exports = {
             presets: ['es2015']
           }
         },
-        { test: /\.scss$/, loader: 'style!css!sass' }
+        {
+          test: /\.css/,
+          loader: 'style!css',
+          includePaths: [path.resolve(__dirname, "./node_modules")]
+        },
+        {
+          test: /\.scss/,
+          loader: 'style!css!sass',
+          includePaths: [path.resolve(__dirname, "./node_modules")]
+        },
+        {
+          test: /\.woff[\d]?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+          loader: "url-loader?limit=10000&mimetype=application/font-woff"
+        },
+        {
+          test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+          loader: "file-loader"
+        },
+        {
+          test: /\.(hbs|handlebars)$/,
+          loader: 'handlebars-loader'
+        },
+        {
+          test: /\.html\.(hbs|handlebars)$/,
+          loader: 'handlebars-loader!html'
+        }
       ]
     },
 
