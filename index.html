@@ -1,18 +1,48 @@
 <!DOCTYPE html>
 <html>
+
     <head>
       <title>Example</title>
-
       <script src="vendor.bundle.js" type="text/javascript" charset="utf-8" defer></script>
       <script src="bundle.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
+
     <body class="container-fluid">
       <form id="sign-up">
         <fieldset>
           <legend>Sign up!</legend>
+          <input type="text" name="credentials[email]" placeholder="email">
+          <input type="password" name="credentials[password]" placeholder="password">
+          <input type="password" name="credentials[password_confirmation]" placeholder="password confirm">
           <input type="submit" name="submit" value="Sign up!">
         </fieldset>
       </form>
+
+      <form id="sign-in">
+        <fieldset>
+          <legend>Sign in!</legend>
+          <input type="text" name="credentials[email]" placeholder="email">
+          <input type="password" name="credentials[password]" placeholder="password">
+          <input type="submit" name="submit" value="Sign in!">
+        </fieldset>
+      </form>
+
+      <form id="sign-out">
+        <fieldset>
+          <legend>Sign out!</legend>
+          <input type="submit" name="submit" value="Sign out!">
+        </fieldset>
+      </form>
+
+      <form id="change-password">
+        <fieldset>
+          <legend>Change Password</legend>
+          <input type="text" name="passwords[old]" placeholder="old password">
+          <input type="text" name="passwords[new]" placeholder="new password">
+          <input type="submit" name="submit" value="Change Password">
+        </fieldset>
+      </form>
+
       <h1>Example</h1>
 
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
@@ -22,5 +52,8 @@
       velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
       cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
       est laborum.</p>
+
+
+
     </body>
 </html>
