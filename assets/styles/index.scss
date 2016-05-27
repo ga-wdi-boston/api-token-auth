@@ -8,8 +8,10 @@ body {
 
 td,
 th {
-  height: 50px;
+  height: 60px;
   text-align: center;
+  vertical-align: baseline;
+  width: 33%;
 }
 
 div {

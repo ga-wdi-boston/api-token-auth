@@ -42,6 +42,9 @@ const onChangePassword = function(event){
 
 const onNewGame = function(event){
   event.preventDefault();
+
+  $('.cell').text('');
+
   api.newGame()
   .done(ui.success)
   .then(ui.showBoard)
@@ -66,8 +69,17 @@ const onGetDoneGames = function(event){
   .fail(ui.failure);
 };
 
+const onSetCellValue = function(){
+  $(this).text("MUAH HAH HAH");
+  return true;
+};
+
 
 const addHandlers = () => {
+
+  //
+  //buttons
+  //
   $('#sign-up').on('submit', onSignUp);
 
   $('#sign-in').on('submit', onSignIn);
@@ -79,6 +91,15 @@ const addHandlers = () => {
   $('#new-game').on('submit', onNewGame);
   $('#get-games').on('submit', onGetGames);
   $('#get-done-games').on('submit', onGetDoneGames);
+
+
+  $('#get-done-games').on('submit', onGetDoneGames);
+
+  //
+  // table cells
+  //
+
+  $('.cell').on('click', onSetCellValue);
 };
 
 module.exports = {
