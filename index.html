@@ -60,18 +60,18 @@
         <table class="table table-bordered hideable">
           <tr>
             <th>Player ID</th>
-            <th>Wins</th>
-            <th>Total Games</th>
+            <th>Games</th>
+            <th>Finished Games</th>
           </tr>
           <tr>
-            <td>Player ID</td>
-            <td>Wins</td>
-            <td>Total Games</td>
+            <td id="stats-player-id"></td>
+            <td id="stats-games"></td>
+            <td id="stats-finished-games"></td>
           </tr>
         </table>
       </div>
 
-      <br><br><br>
+      <br>
 
       <div class="hideable">
         <h2>Game Management</h2>
@@ -84,11 +84,11 @@
         </form>
 
         <form class="game-mgmt-button" id="get-games">
-            <input type="submit" name="submit" value="Get Games!">
+            <input type="submit" name="submit" value="Refresh Games!">
         </form>
 
         <form class="game-mgmt-button hideable" id="get-done-games">
-            <input type="submit" name="submit" value="Get Done Games!">
+            <input type="submit" name="submit" value="Refresh Done Games!">
         </form>
 
       </div>

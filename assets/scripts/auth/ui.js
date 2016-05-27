@@ -34,9 +34,29 @@ const hideBoard = function(){
   $('.hideable').hide();
 };
 
-const updateStats = function(){
-  console.log('updating stats!');
+const updateGames = function(data){
+  console.log('updating games!');
+
+  // set objects
+  if(data !== undefined && data.games !== undefined){
+    app.games = data.games;
+    $('#stats-player-id').text(app.user.id);
+    $('#stats-games').text(app.games.length);
+    $('#stats-finished-games').text(app.finished_games.length);
+  }
 };
+
+const updateFinishedGames = function(data){
+    console.log('updating finished games!');
+
+    // set objects
+    if(data !== undefined && data.games !== undefined){
+      app.finished_games = data.games;
+      $('#stats-player-id').text(app.user.id);
+      $('#stats-games').text(app.games.length);
+      $('#stats-finished-games').text(app.finished_games.length);
+    }
+  };
 
 module.exports = {
   failure,
@@ -45,5 +65,6 @@ module.exports = {
   signOutSuccess,
   showBoard,
   hideBoard,
-  updateStats,
+  updateGames,
+  updateFinishedGames,
 };

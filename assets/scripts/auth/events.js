@@ -45,7 +45,8 @@ const onNewGame = function(event){
   api.newGame()
   .done(ui.success)
   .then(ui.showBoard)
-  .then(ui.updateStats)
+  .then(ui.updateGames)
+  .then(ui.updateFinishedGames)
   .fail(ui.failure);
 };
 
@@ -53,7 +54,7 @@ const onGetGames = function(event){
   event.preventDefault();
   api.showGames()
   .done(ui.success)
-  .then(ui.updateStats)
+  .then(ui.updateGames)
   .fail(ui.failure);
 };
 
@@ -61,14 +62,18 @@ const onGetDoneGames = function(event){
   event.preventDefault();
   api.showOverGames()
   .done(ui.success)
-  .then(ui.updateStats)
+  .then(ui.updateFinishedGames)
   .fail(ui.failure);
 };
 
 
 const addHandlers = () => {
   $('#sign-up').on('submit', onSignUp);
+
   $('#sign-in').on('submit', onSignIn);
+  // $('#sign-in').on('submit', onGetGames);
+  // $('#sign-in').on('submit', onGetDoneGames);
+
   $('#sign-out').on('submit', onSignOut);
   $('#change-password').on('submit', onChangePassword);
   $('#new-game').on('submit', onNewGame);
