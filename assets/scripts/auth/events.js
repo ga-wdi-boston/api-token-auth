@@ -4,6 +4,11 @@ const getFormFields = require('../../../lib/get-form-fields');
 
 const api = require('./api');
 const ui = require('./ui');
+const game_logic = require('../game/game_logic');
+let currentPlayer = game_logic.currentPlayer;
+let currentSymbol = game_logic.currentSymbol;
+let symbols = game_logic.symbols;
+let players = game_logic.players;
 
 const onSignUp = function(event){
   event.preventDefault();
@@ -70,10 +75,26 @@ const onGetDoneGames = function(event){
 };
 
 const onSetCellValue = function(){
-  $(this).text("MUAH HAH HAH");
+  $(this).text(currentSymbol);
+  $('#player-turn').text(currentPlayer + "'s Turn!");
+
+  if(currentPlayer === players[0]){
+    game_logic.currentPlayer = players[1];
+    currentPlayer = players[1];
+    game_logic.currentSymbol = symbols[currentPlayer];
+    currentSymbol = symbols[currentPlayer];
+  }else if (currentPlayer === players[1]){
+    game_logic.currentPlayer = players[0];
+    currentPlayer = players[0];
+    game_logic.currentSymbol = symbols[currentPlayer];
+    currentSymbol = symbols[currentPlayer];
+  }else{
+    console.log('There is an error with toggling currentPlayer!');
+    return false;
+  }
+
   return true;
 };
-
 
 const addHandlers = () => {
 
