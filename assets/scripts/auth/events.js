@@ -1,16 +1,40 @@
 'use strict';
 
-const getFormFields = require('../../../lib/get-form-fields');
+const api = require('./api');
+const ui = require('./ui');
+const getFormFields = require('../../../lib/get-form-fields.js');
 
-const authApi = require('./api');
-const authUi = require('./ui');
+const onSignUp = function(event){
+  event.preventDefault();
+  let data = getFormFields(event.target);
+  api.signUp(data)
+  .done(ui.success)
+  .fail(ui.fail);
+};
+
+const onSignIn = function(event){
+  event.preventDefault();
+  let data = getFormFields(event.target);
+  api.signIn(data)
+  .done(ui.signInSuccess)
+  .fail(ui.fail);
+};
+
+const onSignOut = function(event){
+  event.preventDefault();
+  let data = getFormFields(event.target);
+  api.signOut(data)
+  .done(ui.signOutSuccess)
+  .fail(ui.fail);
+};
+
+
+
 
 const addHandlers = () => {
-  $('#sign-up').on('submit', function (event) {
-    let data = getFormFields(this);
-    event.preventDefault();
-    authApi.signUp(authUi.success, authUi.failure, data);
-  });
+  $('#sign-up').on('submit', onSignUp);
+  $('#sign-in').on('submit', onSignIn);
+  $('#sign-out').on('submit', onSignOut);
 };
 
 module.exports = {

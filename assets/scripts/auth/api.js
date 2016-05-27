@@ -5,38 +5,48 @@ const getFormFields = require('../../../lib/get-form-fields.js');
 
 //authApi.signUp(authUi.success, authUi.failure, data);
 
-const signUp = function(form){
-  let data = getFormFields(form);
+const signUp = function(data){
   console.log(data);
   return $.ajax({
-    url: app.api + '/sign-up',
+    url: app.host + '/sign-up/',
     method: 'POST',
-    data: data
+    data,
   });
 };
 
-const signIn = function(form){
-  let data = getFormFields(form);
+const signIn = function(data){
   console.log(data);
   return $.ajax({
-    url: app.api + '/sign-in',
+    url: app.host + '/sign-in/',
     method: 'POST',
-    data: data
+    data,
   });
 };
 
 const signOut = function(){
   return $.ajax({
     method: 'DELETE',
-    url: app.api + '/sign-out/' + app.user.id,
+    url: app.host + '/sign-out/' + app.user.id,
     headers: {
       Authorization: 'Token token=' + app.user.token,
     },
   });
 };
 
+const changePassword = function(data){
+  return $.ajax({
+    method: 'PATCH',
+    url: app.host + '/sign-out/' + app.user.id,
+    headers: {
+      Authorization: 'Token token=' + app.user.token,
+    },
+    data: data,
+  });
+};
+
 module.exports = {
   signUp,
   signIn,
-  signOut
+  signOut,
+  changePassword,
 };

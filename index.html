@@ -7,10 +7,39 @@
       <script src="bundle.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body class="container-fluid">
+      <form id="book-patch">
+        <label>Id:
+          <input type="text" name="book[id]" value="">
+        </label>
+        <label>Title:
+          <input type="text" name="book[title]" value="">
+        </label>
+        <label>Author:
+          <input type="text" name="book[author]" value="">
+        </label>
+        <input type="submit" name="submit" value="Sign up!">
+      </form>
       <form id="sign-up">
         <fieldset>
           <legend>Sign up!</legend>
+          <input type="text" name="credentials[email]" value="" placeholder="email">
+          <input type="password" name="credentials[password]" value="" placeholder="password">
+          <input type="password" name="credentials[password_confirmation]" value="" placeholder="password confirmation">
           <input type="submit" name="submit" value="Sign up!">
+        </fieldset>
+      </form>
+      <form id="sign-in">
+        <fieldset>
+          <legend>Sign in!</legend>
+          <input type="text" name="credentials[email]" value="" placeholder="email">
+          <input type="password" name="credentials[password]" value="" placeholder="password">
+          <input type="submit" name="submit" value="Sign in!">
+        </fieldset>
+      </form>
+      <form id="sign-out">
+        <fieldset>
+          <legend>Sign out!</legend>
+          <input type="submit" name="submit" value="Sign out!">
         </fieldset>
       </form>
       <h1>Example</h1>

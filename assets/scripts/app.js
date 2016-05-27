@@ -1,5 +1,5 @@
 'use strict';
 
 module.exports = {
-  api: 'http://localhost:3000',
+  host: 'http://localhost:3000',
 };
