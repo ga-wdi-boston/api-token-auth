@@ -5,10 +5,13 @@ const getFormFields = require('../../../lib/get-form-fields');
 const api = require('./api');
 const ui = require('./ui');
 const game_logic = require('../game/game_logic');
-let currentPlayer = game_logic.currentPlayer;
-let currentSymbol = game_logic.currentSymbol;
+
 let symbols = game_logic.symbols;
 let players = game_logic.players;
+let currentPlayer = game_logic.currentPlayer;
+let currentSymbol = game_logic.currentSymbol;
+// let otherPlayer = game_logic.otherPlayer;
+// let otherSymbol = game_logic.otherSymbol;
 
 const onSignUp = function(event){
   event.preventDefault();
@@ -48,6 +51,7 @@ const onChangePassword = function(event){
 const onNewGame = function(event){
   event.preventDefault();
 
+  $('#player-turn').text(currentPlayer + "'s Turn!");
   $('.cell').text('');
 
   api.newGame()
@@ -76,7 +80,6 @@ const onGetDoneGames = function(event){
 
 const onSetCellValue = function(){
   $(this).text(currentSymbol);
-  $('#player-turn').text(currentPlayer + "'s Turn!");
 
   if(currentPlayer === players[0]){
     game_logic.currentPlayer = players[1];
@@ -92,6 +95,8 @@ const onSetCellValue = function(){
     console.log('There is an error with toggling currentPlayer!');
     return false;
   }
+
+  $('#player-turn').text(currentPlayer + "'s Turn!");
 
   return true;
 };
