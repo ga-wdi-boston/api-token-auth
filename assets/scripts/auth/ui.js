@@ -26,18 +26,16 @@ const signOutSuccess = function(){
 
 const showBoard = function(){
   console.log('board shown!');
-  $('#game-board').show();
-  $('#instructructions-title').show();
-  $('#instructructions').show();
-  $('#game-board-section-title').show();
+  $('.hideable').show();
 };
 
 const hideBoard = function(){
   console.log('board hidden!');
-  $('#game-board-section-title').hide();
-  $('#game-board').hide();
-  $('#instructructions-title').hide();
-  $('#instructructions').hide();
+  $('.hideable').hide();
+};
+
+const updateStats = function(){
+  console.log('updating stats!');
 };
 
 module.exports = {
@@ -47,4 +45,5 @@ module.exports = {
   signOutSuccess,
   showBoard,
   hideBoard,
+  updateStats,
 };

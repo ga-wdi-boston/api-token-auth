@@ -9,71 +9,124 @@
 
     <body class="container-fluid">
 
-      <h1 id="page-title">Tic Tac Toe</h1>
+      <div>
+        <h1 id="page-title">Tic Tac Toe</h1>
+      </div>
 
-      <form id="sign-up">
-        <fieldset>
-          <legend>Sign up!</legend>
-          <input type="text" name="credentials[email]" placeholder="email">
-          <input type="password" name="credentials[password]" placeholder="password">
-          <input type="password" name="credentials[password_confirmation]" placeholder="password confirm">
-          <input type="submit" name="submit" value="Sign up!">
-        </fieldset>
-      </form>
+      <div id="user-options">
+        <form id="sign-up">
+          <fieldset>
+            <legend>Sign up!</legend>
+            <input type="text" name="credentials[email]" placeholder="email">
+            <input type="password" name="credentials[password]" placeholder="password">
+            <input type="password" name="credentials[password_confirmation]" placeholder="password confirm">
+            <input type="submit" name="submit" value="Sign up!">
+          </fieldset>
+        </form>
 
-      <form id="sign-in">
-        <fieldset>
-          <legend>Sign in!</legend>
-          <input type="text" name="credentials[email]" placeholder="email">
-          <input type="password" name="credentials[password]" placeholder="password">
-          <input type="submit" name="submit" value="Sign in!">
-        </fieldset>
-      </form>
+        <form id="sign-in">
+          <fieldset>
+            <legend>Sign in!</legend>
+            <input type="text" name="credentials[email]" placeholder="email">
+            <input type="password" name="credentials[password]" placeholder="password">
+            <input type="submit" name="submit" value="Sign in!">
+          </fieldset>
+        </form>
 
-      <form id="sign-out">
-        <fieldset>
-          <legend>Sign out!</legend>
-          <input type="submit" name="submit" value="Sign out!">
-        </fieldset>
-      </form>
+        <form id="sign-out">
+          <fieldset>
+            <legend>Sign out!</legend>
+            <input type="submit" name="submit" value="Sign out!">
+          </fieldset>
+        </form>
 
-      <form id="change-password">
-        <fieldset>
-          <legend>Change Password</legend>
-          <input type="text" name="passwords[old]" placeholder="old password">
-          <input type="text" name="passwords[new]" placeholder="new password">
-          <input type="submit" name="submit" value="Change Password">
-        </fieldset>
-      </form>
+        <form id="change-password">
+          <fieldset>
+            <legend>Change Password</legend>
+            <input type="text" name="passwords[old]" placeholder="old password">
+            <input type="text" name="passwords[new]" placeholder="new password">
+            <input type="submit" name="submit" value="Change Password">
+          </fieldset>
+        </form>
+      </div>
 
       <br><br><br>
 
-      <h3 id="game-board-section-title">Tic Tac Toe Game Board</h3>
+      <div class="hideable">
+        <h2>Player Stats</h2>
+      </div>
 
-      <h3 id="instructructions-title">Instructions</h3>
-      <p id="instructructions">Lorem ipsum HOW TO PLAY</p>
+      <div id="player-stats" class="hideable">
+        <table class="table table-bordered hideable">
+          <tr>
+            <th>Player ID</th>
+            <th>Wins</th>
+            <th>Total Games</th>
+          </tr>
+          <tr>
+            <td>Player ID</td>
+            <td>Wins</td>
+            <td>Total Games</td>
+          </tr>
+        </table>
+      </div>
 
-      <table id="game-board" class="table table-bordered">
+      <br><br><br>
 
-        <tr>
-          <td id="cell-0"  class="cell">0</td>
-          <td id="cell-1"  class="cell">1</td>
-          <td id="cell-2"  class="cell">2</td>
-        </tr>
+      <div class="hideable">
+        <h2>Game Management</h2>
+      </div>
 
-        <tr>
-          <td id="cell-3"  class="cell">3</td>
-          <td id="cell-4"  class="cell">4</td>
-          <td id="cell-5"  class="cell">5</td>
-        </tr>
+      <div id="game-management" class="hideable">
 
-        <tr>
-          <td id="cell-6"  class="cell">6</td>
-          <td id="cell-7"  class="cell">7</td>
-          <td id="cell-8"  class="cell">8</td>
-        </tr>
+        <form class="game-mgmt-button" id="new-game">
+            <input type="submit" name="submit" value="New Game!">
+        </form>
 
-      </table>
+        <form class="game-mgmt-button" id="get-games">
+            <input type="submit" name="submit" value="Get Games!">
+        </form>
+
+        <form class="game-mgmt-button hideable" id="get-done-games">
+            <input type="submit" name="submit" value="Get Done Games!">
+        </form>
+
+      </div>
+
+      <br><br><br>
+
+      <div>
+        <h2 id="game-board-section-title" class="hideable">Game Board</h2>
+      </div>
+
+      <div>
+        <h3 id="instructructions-title" class="hideable">Instructions</h3>
+        <p id="instructructions" class="hideable">Lorem ipsum HOW TO PLAY</p>
+      </div>
+
+      <div id="table-container" class="hideable">
+        <table id="game-board" class="table table-bordered">
+
+          <tr>
+            <td id="cell-0"  class="cell">0</td>
+            <td id="cell-1"  class="cell">1</td>
+            <td id="cell-2"  class="cell">2</td>
+          </tr>
+
+          <tr>
+            <td id="cell-3"  class="cell">3</td>
+            <td id="cell-4"  class="cell">4</td>
+            <td id="cell-5"  class="cell">5</td>
+          </tr>
+
+          <tr>
+            <td id="cell-6"  class="cell">6</td>
+            <td id="cell-7"  class="cell">7</td>
+            <td id="cell-8"  class="cell">8</td>
+          </tr>
+
+        </table>
+      </div>
 
       <br><br><br>
 

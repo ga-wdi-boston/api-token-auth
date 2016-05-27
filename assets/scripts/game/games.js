@@ -5,7 +5,7 @@
 //
 
 // create new game
-const newGame = function(id, cells, over, player_x, player_o){
+const game = function(id, cells, over, player_x, player_o){
   id = id;
   cells = cells;
   over = over;
@@ -14,5 +14,5 @@ const newGame = function(id, cells, over, player_x, player_o){
 };
 
 module.exports = {
-  newGame,
+  game,
 };
