@@ -12,6 +12,8 @@ let currentPlayer = game_logic.currentPlayer;
 let currentSymbol = game_logic.currentSymbol;
 // let otherPlayer = game_logic.otherPlayer;
 // let otherSymbol = game_logic.otherSymbol;
+let boardArray = game_logic.boardArray;
+let gameOver = game_logic.gameOver;
 
 const onSignUp = function(event){
   event.preventDefault();
@@ -79,26 +81,44 @@ const onGetDoneGames = function(event){
 };
 
 const onSetCellValue = function(){
-  $(this).text(currentSymbol);
 
-  if(currentPlayer === players[0]){
-    game_logic.currentPlayer = players[1];
-    currentPlayer = players[1];
-    game_logic.currentSymbol = symbols[currentPlayer];
-    currentSymbol = symbols[currentPlayer];
-  }else if (currentPlayer === players[1]){
-    game_logic.currentPlayer = players[0];
-    currentPlayer = players[0];
-    game_logic.currentSymbol = symbols[currentPlayer];
-    currentSymbol = symbols[currentPlayer];
-  }else{
-    console.log('There is an error with toggling currentPlayer!');
-    return false;
+  if(gameOver === false){
+
+    let currentVal = $(this).text();
+
+    if( currentVal !== ""){
+      console.log('Sorry! Someone already went there.');
+      return false;
+
+    } else {
+
+      $(this).text(currentSymbol);
+      game_logic.boardArray[0] = currentSymbol;
+      boardArray[0] = currentSymbol;
+
+      if(currentPlayer === players[0]){
+        game_logic.currentPlayer = players[1];
+        currentPlayer = players[1];
+        game_logic.currentSymbol = symbols[currentPlayer];
+        currentSymbol = symbols[currentPlayer];
+      }else if (currentPlayer === players[1]){
+        game_logic.currentPlayer = players[0];
+        currentPlayer = players[0];
+        game_logic.currentSymbol = symbols[currentPlayer];
+        currentSymbol = symbols[currentPlayer];
+      }else{
+        console.log('There is an error with toggling currentPlayer!');
+        return false;
+      }
+      $('#player-turn').text(currentPlayer + "'s Turn!");
+      return true;
+    }
+  } else if (gameOver !== false){
+    console.log('The game is over! Start a new game!');
+  } else{
+    console.log('There is a weird error with gameOver');
   }
 
-  $('#player-turn').text(currentPlayer + "'s Turn!");
-
-  return true;
 };
 
 const addHandlers = () => {

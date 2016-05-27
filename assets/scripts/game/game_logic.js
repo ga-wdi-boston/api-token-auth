@@ -14,12 +14,14 @@ let players = players_file.players;
 // game flow
 //
 
+let gameOver = false;
+
 let currentPlayer = players[0];
 let otherPlayer = players[1];
 let currentSymbol = symbols[currentPlayer];
 let otherSymbol = symbols[otherPlayer];
 
-let board_array = [
+let boardArray = [
   $('#cell-0').text(),
   $('#cell-1').text(),
   $('#cell-2').text(),
@@ -38,5 +40,6 @@ module.exports = {
   otherSymbol,
   symbols,
   players,
-  board_array,
+  boardArray,
+  gameOver,
 };
