@@ -11,6 +11,7 @@ const onSignUp = function(event){
   let data = getFormFields(event.target);
   api.signUp(data)
   .done(ui.success)
+  .then(ui.showBoard)
   .fail(ui.failure);
 };
 
@@ -20,6 +21,7 @@ const onSignIn = function(event){
   let data = getFormFields(event.target);
   api.signIn(data)
   .done(ui.signInSuccess)
+  .then(ui.showBoard)
   .fail(ui.failure);
 };
 
@@ -27,6 +29,7 @@ const onSignOut = function(event){
   event.preventDefault();
   api.signOut()
   .done(ui.success)
+  .then(ui.hideBoard)
   .fail(ui.failure);
 };
 
@@ -35,6 +38,7 @@ const onChangePassword = function(event){
   let data = getFormFields(event.target);
   api.changePassword(data)
   .done(ui.changePasswordSuccess)
+  .then(ui.showBoard)
   .fail(ui.failure);
 };
 

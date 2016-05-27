@@ -24,9 +24,27 @@ const signOutSuccess = function(){
   console.log('app: ', app);
 };
 
+const showBoard = function(){
+  console.log('board shown!');
+  $('#game-board').show();
+  $('#instructructions-title').show();
+  $('#instructructions').show();
+  $('#game-board-section-title').show();
+};
+
+const hideBoard = function(){
+  console.log('board hidden!');
+  $('#game-board-section-title').hide();
+  $('#game-board').hide();
+  $('#instructructions-title').hide();
+  $('#instructructions').hide();
+};
+
 module.exports = {
   failure,
   success,
   signInSuccess,
   signOutSuccess,
+  showBoard,
+  hideBoard,
 };
