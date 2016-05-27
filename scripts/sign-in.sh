@@ -4,6 +4,7 @@
 curl "http://httpbin.org/post" \
   --include \
   --request POST \
-  --data-urlencode ""
+  --data-urlencode "credentials[email]=$EMAIL" \
+  --data-urlencode "credentials[password]=$PASSWORD"
 
 echo
