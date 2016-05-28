@@ -1,6 +1,7 @@
 'use strict';
 
 const app = require('../app.js');
+const game_logic = require('../game/game_logic.js');
 
 const success = (data) => {
   if(data){
@@ -59,6 +60,27 @@ const updateFinishedGames = function(data){
     }
   };
 
+const newGame = function(){
+
+  $('.table-section').hide();
+  $('.hideable').hide();
+  $('.game-over-section').hide();
+
+  game_logic.gameOver = false;
+  game_logic.activeGame = true;
+  game_logic.CurrentPlayer = game_logic.players[0];
+  game_logic.otherPlayer = game_logic.players[1];
+  game_logic.currentSymbol = game_logic.symbols[game_logic.currentPlayer];
+  game_logic.otherSymbol = game_logic.symbols[game_logic.otherPlayer];
+
+  $('#player-turn').text(game_logic.currentPlayer + "'s Turn!");
+  $('.cell').text('');
+
+  $('.table-section').show();
+  $('.hideable').show();
+
+};
+
 module.exports = {
   failure,
   success,
@@ -68,4 +90,5 @@ module.exports = {
   hideBoard,
   updateGames,
   updateFinishedGames,
+  newGame,
 };

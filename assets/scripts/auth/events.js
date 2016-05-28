@@ -1,90 +1,93 @@
 'use strict';
 
 const getFormFields = require('../../../lib/get-form-fields');
-
 const api = require('./api');
 const ui = require('./ui');
 const game_logic = require('../game/game_logic');
 
 const onSignUp = function(event){
+
   event.preventDefault();
   game_logic.activeGame = false;
+
   let data = getFormFields(event.target);
   api.signUp(data)
   .done(ui.success)
   .fail(ui.failure);
+
 };
 
 const onSignIn = function(event){
+
   event.preventDefault();
   game_logic.activeGame = false;
+
   let data = getFormFields(event.target);
   api.signIn(data)
   .done(ui.signInSuccess)
   .then(ui.showBoard)
   .fail(ui.failure);
+
 };
 
 const onSignOut = function(event){
+
   event.preventDefault();
   game_logic.activeGame = false;
+
   api.signOut()
   .done(ui.success)
   .then(ui.hideBoard)
   .fail(ui.failure);
+
 };
 
 const onChangePassword = function(event){
+
   event.preventDefault();
   let data = getFormFields(event.target);
+
   api.changePassword(data)
   .done(ui.changePasswordSuccess)
   .then(ui.showBoard)
   .fail(ui.failure);
+
 };
 
 const onNewGame = function(event){
+
   event.preventDefault();
-
-  $('.table-section').hide();
-  $('.hideable').hide();
-  $('.game-over-section').hide();
-
-  game_logic.gameOver = false;
-  game_logic.activeGame = true;
-  game_logic.CurrentPlayer = game_logic.players[0];
-  game_logic.otherPlayer = game_logic.players[1];
-  game_logic.currentSymbol = game_logic.symbols[game_logic.currentPlayer];
-  game_logic.otherSymbol = game_logic.symbols[game_logic.otherPlayer];
-
-  $('#player-turn').text(game_logic.currentPlayer + "'s Turn!");
-  $('.cell').text('');
-
-  $('.table-section').show();
-  $('.hideable').show();
 
   api.newGame()
   .done(ui.success)
+  .then(ui.newGame)
   .then(ui.showBoard)
   .then(ui.updateGames)
   .then(ui.updateFinishedGames)
   .fail(ui.failure);
+
 };
 
 const onGetGames = function(event){
+
   event.preventDefault();
+
   api.showGames()
   .done(ui.success)
   .then(ui.updateGames)
   .fail(ui.failure);
+
 };
 
 const onGetDoneGames = function(event){
+
   event.preventDefault();
+
   api.showOverGames()
   .done(ui.success)
   .then(ui.updateFinishedGames)
   .fail(ui.failure);
+  
 };
 
 const checkSame = function(dict){
