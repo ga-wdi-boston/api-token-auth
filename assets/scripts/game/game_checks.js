@@ -25,6 +25,32 @@ const checkSame = function(dict){
   return true;
 };
 
+// check diagonal win conditions
+const checkDiags = function(){
+  console.log('checking diags', $('#cell-00').text());
+  // define vars
+  let topLeft = $('#cell-00').text();
+  let topRight = $('#cell-02').text();
+  let center = $('#cell-11').text();
+  let bottomLeft = $('#cell-20').text();
+  let bottomRight = $('#cell-22').text();
+
+  if(topLeft !== ''){
+    if(topLeft === center === bottomRight){
+      return true;
+    }
+  }
+
+  if(topRight !== ''){
+    if(topRight === center === bottomLeft){
+      return true;
+    }
+  }
+
+  return false;
+
+};
+
 // check the game
 const checkGame = function(){
   let gameOver = false;
@@ -34,7 +60,8 @@ const checkGame = function(){
     checkSame($(".row-1")) === true ||
     checkSame($(".col-1")) === true ||
     checkSame($(".row-2")) === true ||
-    checkSame($(".col-2")) === true
+    checkSame($(".col-2")) === true ||
+    checkDiags() === true
   ){
     gameOver = true;
   }
@@ -48,6 +75,7 @@ const checkGame = function(){
 };
 
 module.exports = {
-  checkGame,
   checkSame,
+  checkDiags,
+  checkGame,
 };

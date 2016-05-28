@@ -154,17 +154,11 @@ const addHandlers = () => {
   //buttons
   //
   $('#sign-up').on('submit', onSignUp);
-
   $('#sign-in').on('submit', onSignIn);
-  $('#sign-in').on('submit', onGetGames);
-  $('#sign-in').on('submit', onGetDoneGames);
-
   $('#sign-out').on('submit', onSignOut);
   $('#change-password').on('submit', onChangePassword);
   $('#new-game').on('submit', onNewGame);
   $('#get-games').on('submit', onGetGames);
-  $('#get-done-games').on('submit', onGetDoneGames);
-
   $('#get-done-games').on('submit', onGetDoneGames);
 
   //
