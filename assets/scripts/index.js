@@ -4,6 +4,8 @@ const app = require('./app.js');
 
 $('.table-section').hide();
 $('.hideable').hide();
+$('.game-over-section').hide();
+
 
 app.user = null;
 app.games = [];

@@ -47,6 +47,7 @@ const onNewGame = function(event){
 
   $('.table-section').hide();
   $('.hideable').hide();
+  $('.game-over-section').hide();
 
   $('#player-turn').text(game_logic.currentPlayer + "'s Turn!");
   $('.cell').text('');
