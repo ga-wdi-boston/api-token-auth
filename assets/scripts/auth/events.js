@@ -8,6 +8,7 @@ const game_logic = require('../game/game_logic');
 
 const onSignUp = function(event){
   event.preventDefault();
+  game_logic.activeGame = false;
   let data = getFormFields(event.target);
   api.signUp(data)
   .done(ui.success)
@@ -16,6 +17,7 @@ const onSignUp = function(event){
 
 const onSignIn = function(event){
   event.preventDefault();
+  game_logic.activeGame = false;
   let data = getFormFields(event.target);
   api.signIn(data)
   .done(ui.signInSuccess)
@@ -25,6 +27,7 @@ const onSignIn = function(event){
 
 const onSignOut = function(event){
   event.preventDefault();
+  game_logic.activeGame = false;
   api.signOut()
   .done(ui.success)
   .then(ui.hideBoard)
@@ -43,21 +46,19 @@ const onChangePassword = function(event){
 const onNewGame = function(event){
   event.preventDefault();
 
-  game_logic.gameOver = false;
-
   $('.table-section').hide();
   $('.hideable').hide();
   $('.game-over-section').hide();
 
-  $('#player-turn').text(game_logic.currentPlayer + "'s Turn!");
-  $('.cell').text('');
-
+  game_logic.gameOver = false;
   game_logic.activeGame = true;
-
   game_logic.CurrentPlayer = game_logic.players[0];
   game_logic.otherPlayer = game_logic.players[1];
   game_logic.currentSymbol = game_logic.symbols[game_logic.currentPlayer];
   game_logic.otherSymbol = game_logic.symbols[game_logic.otherPlayer];
+
+  $('#player-turn').text(game_logic.currentPlayer + "'s Turn!");
+  $('.cell').text('');
 
   $('.table-section').show();
   $('.hideable').show();
@@ -128,7 +129,7 @@ const checkGame = function(){
 
 const onSetCellValue = function(){
 
-  if(game_logic.gameOver === false){
+  if(game_logic.gameOver === false && game_logic.activeGame === true){
 
     let currentVal = $(this).text();
 
@@ -191,8 +192,8 @@ const addHandlers = () => {
   $('#sign-up').on('submit', onSignUp);
 
   $('#sign-in').on('submit', onSignIn);
-  // $('#sign-in').on('submit', onGetGames);
-  // $('#sign-in').on('submit', onGetDoneGames);
+  $('#sign-in').on('submit', onGetGames);
+  $('#sign-in').on('submit', onGetDoneGames);
 
   $('#sign-out').on('submit', onSignOut);
   $('#change-password').on('submit', onChangePassword);

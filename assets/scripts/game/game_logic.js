@@ -14,13 +14,12 @@ let players = players_file.players;
 // game flow
 //
 
-let gameOver = false;
-
 let currentPlayer = players[0];
 let otherPlayer = players[1];
 let currentSymbol = symbols[currentPlayer];
 let otherSymbol = symbols[otherPlayer];
 let activeGame = false;
+let gameOver = false;
 let gameSize = 3;
 
 let boardDict = {
@@ -43,7 +42,7 @@ module.exports = {
   symbols,
   players,
   boardDict,
-  gameOver,
   activeGame,
+  gameOver,
   gameSize,
 };
