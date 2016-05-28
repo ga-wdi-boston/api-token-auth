@@ -17,6 +17,7 @@ const failure = (error) => {
 
 const signInSuccess = function(data){
   app.user = data.user;
+  
   console.log('app: ', app);
 };
 

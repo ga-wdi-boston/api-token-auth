@@ -43,6 +43,32 @@ let boardDict = {
     // 'cell-22': $('#cell-22').text(),
 };
 
+const swapPlayers = function(){
+
+  if(currentPlayer === players[0]){
+
+    currentPlayer = players[1];
+    currentSymbol = symbols[players[1]];
+    otherPlayer = players[0];
+    otherSymbol = symbols[players[0]];
+
+  }else if (currentPlayer === players[1]){
+
+    currentPlayer = players[0];
+    currentSymbol = symbols[players[0]];
+    otherPlayer = players[1];
+    otherSymbol = symbols[players[1]];
+
+  }else{
+    console.log('There is an error with toggling currentPlayer!');
+    return false;
+  }
+
+  console.log('boardDict: ', boardDict);
+  $('#player-turn').text(currentPlayer + "'s Turn!");
+  return true;
+};
+
 module.exports = {
   currentPlayer,
   currentSymbol,
@@ -54,4 +80,5 @@ module.exports = {
   activeGame,
   gameOver,
   gameSize,
+  swapPlayers,
 };

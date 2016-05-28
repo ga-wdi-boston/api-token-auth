@@ -7,7 +7,6 @@ const game_logic = require('../game/game_logic');
 const game_checks = require('../game/game_checks');
 
 const onSignUp = function(event){
-
   event.preventDefault();
   game_logic.activeGame = false;
 
@@ -19,7 +18,6 @@ const onSignUp = function(event){
 };
 
 const onSignIn = function(event){
-
   event.preventDefault();
   game_logic.activeGame = false;
 
@@ -27,12 +25,13 @@ const onSignIn = function(event){
   api.signIn(data)
   .done(ui.signInSuccess)
   .then(ui.showBoard)
+  .then($('#get-games').submit())
+  .then($('#get-done-games').submit())
   .fail(ui.failure);
 
 };
 
 const onSignOut = function(event){
-
   event.preventDefault();
   game_logic.activeGame = false;
 
@@ -44,7 +43,6 @@ const onSignOut = function(event){
 };
 
 const onChangePassword = function(event){
-
   event.preventDefault();
   let data = getFormFields(event.target);
 
@@ -56,7 +54,6 @@ const onChangePassword = function(event){
 };
 
 const onNewGame = function(event){
-
   event.preventDefault();
 
   api.newGame()
@@ -70,7 +67,6 @@ const onNewGame = function(event){
 };
 
 const onGetGames = function(event){
-
   event.preventDefault();
 
   api.showGames()
@@ -81,7 +77,6 @@ const onGetGames = function(event){
 };
 
 const onGetDoneGames = function(event){
-
   event.preventDefault();
 
   api.showOverGames()
@@ -107,29 +102,12 @@ const onSetCellValue = function(){
       let clickedCell = this.id;
 
       game_logic.boardDict[clickedCell] = game_logic.currentSymbol;
-      game_logic.boardDict[clickedCell] = game_logic.currentSymbol;
 
       game_logic.gameOver = game_checks.checkGame();
+
       if(game_logic.gameOver === false){
 
-        if(game_logic.currentPlayer === game_logic.players[0]){
-
-          game_logic.currentPlayer = game_logic.players[1];
-          game_logic.currentSymbol = game_logic.symbols[game_logic.players[1]];
-          game_logic.otherPlayer = game_logic.players[0];
-          game_logic.otherSymbol = game_logic.symbols[game_logic.players[0]];
-
-        }else if (game_logic.currentPlayer === game_logic.players[1]){
-
-          game_logic.currentPlayer = game_logic.players[0];
-          game_logic.currentSymbol = game_logic.symbols[game_logic.players[0]];
-          game_logic.otherPlayer = game_logic.players[1];
-          game_logic.otherSymbol = game_logic.symbols[game_logic.players[1]];
-
-        }else{
-          console.log('There is an error with toggling currentPlayer!');
-          return false;
-        }
+        game_logic.swapPlayers();
 
         console.log('boardDict: ', game_logic.boardDict);
         $('#player-turn').text(game_logic.currentPlayer + "'s Turn!");
@@ -137,6 +115,7 @@ const onSetCellValue = function(){
         }
       }
   } else if (game_logic.gameOver === true){
+
     console.log('The game is over! Start a new game!');
     $('.table-section').hide();
     alert('Game Over!');
