@@ -4,6 +4,7 @@ const getFormFields = require('../../../lib/get-form-fields');
 const api = require('./api');
 const ui = require('./ui');
 const game_logic = require('../game/game_logic');
+const game_checks = require('../game/game_checks');
 
 const onSignUp = function(event){
 
@@ -87,47 +88,7 @@ const onGetDoneGames = function(event){
   .done(ui.success)
   .then(ui.updateFinishedGames)
   .fail(ui.failure);
-  
-};
 
-const checkSame = function(dict){
-  let checkVal = $(dict[0]).text();
-  console.log('checkVal: ', checkVal);
-
-  if(checkVal === ""){
-
-    return false;
-
-  }else{
-
-    for(let i = 0, max = game_logic.gameSize; i < max; i++){
-      if($(dict[i]).text() !== checkVal){
-        return false;
-      }
-    }
-  }
-  return true;
-};
-
-const checkGame = function(){
-  let gameOver = false;
-  if(
-    checkSame($(".row-0")) === true ||
-    checkSame($(".col-0")) === true ||
-    checkSame($(".row-1")) === true ||
-    checkSame($(".col-1")) === true ||
-    checkSame($(".row-2")) === true ||
-    checkSame($(".col-2")) === true
-  ){
-    gameOver = true;
-  }
-
-  if(gameOver === true){
-    alert('Game Over!');
-  }
-
-  console.log('gameOver: ', gameOver);
-  return gameOver;
 };
 
 const onSetCellValue = function(){
@@ -148,7 +109,7 @@ const onSetCellValue = function(){
       game_logic.boardDict[clickedCell] = game_logic.currentSymbol;
       game_logic.boardDict[clickedCell] = game_logic.currentSymbol;
 
-      game_logic.gameOver = checkGame();
+      game_logic.gameOver = game_checks.checkGame();
       if(game_logic.gameOver === false){
 
         if(game_logic.currentPlayer === game_logic.players[0]){
