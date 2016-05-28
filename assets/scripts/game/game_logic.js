@@ -44,6 +44,9 @@ let boardDict = {
 };
 
 const swapPlayers = function(){
+  console.log('swapping players.');
+
+  let NewPlayersSymbols = [currentPlayer, otherPlayer, currentSymbol, otherSymbol];
 
   if(currentPlayer === players[0]){
 
@@ -52,6 +55,8 @@ const swapPlayers = function(){
     otherPlayer = players[0];
     otherSymbol = symbols[players[0]];
 
+    NewPlayersSymbols = [players[1], players[0], symbols[players[1]], symbols[players[0]]];
+
   }else if (currentPlayer === players[1]){
 
     currentPlayer = players[0];
@@ -59,14 +64,14 @@ const swapPlayers = function(){
     otherPlayer = players[1];
     otherSymbol = symbols[players[1]];
 
+    NewPlayersSymbols = [players[0], players[1], symbols[players[0]], symbols[players[1]]];
+
   }else{
     console.log('There is an error with toggling currentPlayer!');
     return false;
   }
 
-  console.log('boardDict: ', boardDict);
-  $('#player-turn').text(currentPlayer + "'s Turn!");
-  return true;
+  return NewPlayersSymbols;
 };
 
 module.exports = {

@@ -17,7 +17,7 @@ const failure = (error) => {
 
 const signInSuccess = function(data){
   app.user = data.user;
-  
+
   console.log('app: ', app);
 };
 
@@ -69,7 +69,7 @@ const newGame = function(){
 
   game_logic.gameOver = false;
   game_logic.activeGame = true;
-  game_logic.CurrentPlayer = game_logic.players[0];
+  game_logic.currentPlayer = game_logic.players[0];
   game_logic.otherPlayer = game_logic.players[1];
   game_logic.currentSymbol = game_logic.symbols[game_logic.currentPlayer];
   game_logic.otherSymbol = game_logic.symbols[game_logic.otherPlayer];

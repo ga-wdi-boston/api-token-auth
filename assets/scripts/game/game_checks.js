@@ -8,7 +8,6 @@ const game_logic = require('./game_logic.js');
 // this is based on matching the format we get from jQuery
 const checkSame = function(dict){
   let checkVal = $(dict[0]).text();
-  console.log('checkVal: ', checkVal);
 
   if(checkVal === ""){
 
@@ -27,7 +26,7 @@ const checkSame = function(dict){
 
 // check diagonal win conditions
 const checkDiags = function(){
-  console.log('checking diags', $('#cell-00').text());
+
   // define vars
   let topLeft = $('#cell-00').text();
   let topRight = $('#cell-02').text();

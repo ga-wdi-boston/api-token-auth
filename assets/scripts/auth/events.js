@@ -6,6 +6,11 @@ const ui = require('./ui');
 const game_logic = require('../game/game_logic');
 const game_checks = require('../game/game_checks');
 
+let currentPlayer = game_logic.currentPlayer;
+let currentSymbol = game_logic.currentSymbol;
+let otherPlayer = game_logic.otherPlayer;
+let otherSymbol = game_logic.otherPlayer;
+
 const onSignUp = function(event){
   event.preventDefault();
   game_logic.activeGame = false;
@@ -25,10 +30,7 @@ const onSignIn = function(event){
   api.signIn(data)
   .done(ui.signInSuccess)
   .then(ui.showBoard)
-  .then($('#get-games').submit())
-  .then($('#get-done-games').submit())
   .fail(ui.failure);
-
 };
 
 const onSignOut = function(event){
@@ -88,32 +90,53 @@ const onGetDoneGames = function(event){
 
 const onSetCellValue = function(){
 
+  // you can only go if there is an active, non-over game
+  // eventually maybe these variables should be combined into one
   if(game_logic.gameOver === false && game_logic.activeGame === true){
 
+    // the clicked cell and the value of that cell
     let currentVal = $(this).text();
+    let clickedCell = this.id;
 
+    // check if the cell is empty
     if( currentVal !== ""){
       console.log('Sorry! Someone already went there.');
       return false;
 
     } else {
 
-      $(this).text(game_logic.currentSymbol);
-      let clickedCell = this.id;
+      // set the new value using the currentSymbol
+      $(this).text(currentSymbol);
 
-      game_logic.boardDict[clickedCell] = game_logic.currentSymbol;
+      // set the new value in the model
+      game_logic.boardDict[clickedCell] = currentSymbol;
 
+      // check if the game is over
       game_logic.gameOver = game_checks.checkGame();
 
       if(game_logic.gameOver === false){
 
-        game_logic.swapPlayers();
+        // swap players
+        console.log("current: ",currentPlayer,currentSymbol);
+        let NewPlayersSymbols = game_logic.swapPlayers();
+        currentPlayer = NewPlayersSymbols[0];
+        otherPlayer = NewPlayersSymbols[1];
+        currentSymbol = NewPlayersSymbols[2];
+        otherSymbol  = NewPlayersSymbols[3];
+        console.log("current: ",currentPlayer,currentSymbol);
 
-        console.log('boardDict: ', game_logic.boardDict);
-        $('#player-turn').text(game_logic.currentPlayer + "'s Turn!");
+
+        $('#player-turn').text(currentPlayer + "'s Turn!");
+
         return true;
-        }
+
+      } else{
+        console.log('The game is over! Start a new game!');
+        $('.table-section').hide();
+        alert('Game Over!');
+        $('.game-over-section').show();
       }
+    }
   } else if (game_logic.gameOver === true){
 
     console.log('The game is over! Start a new game!');
@@ -121,7 +144,10 @@ const onSetCellValue = function(){
     alert('Game Over!');
     $('.game-over-section').show();
 
-  } else{
+  } else if(game_logic.activeGame === false){
+    console.log('You need to activate or start a game!');
+
+  } else {
     console.log('There is a weird error with gameOver');
   }
 
