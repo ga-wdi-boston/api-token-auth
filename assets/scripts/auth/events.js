@@ -117,6 +117,11 @@ const checkGame = function(){
   ){
     gameOver = true;
   }
+
+  if(gameOver === true){
+    alert('Game Over!');
+  }
+
   console.log('gameOver: ', gameOver);
   return gameOver;
 };
