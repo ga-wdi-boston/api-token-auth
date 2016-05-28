@@ -31,6 +31,7 @@ const showBoard = function(){
 
 const hideBoard = function(){
   console.log('board hidden!');
+  $('.table-section').hide();
   $('.hideable').hide();
 };
 

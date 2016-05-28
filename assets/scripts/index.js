@@ -2,6 +2,7 @@
 
 const app = require('./app.js');
 
+$('.table-section').hide();
 $('.hideable').hide();
 
 app.user = null;

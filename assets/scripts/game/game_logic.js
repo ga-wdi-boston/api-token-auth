@@ -20,18 +20,20 @@ let currentPlayer = players[0];
 let otherPlayer = players[1];
 let currentSymbol = symbols[currentPlayer];
 let otherSymbol = symbols[otherPlayer];
+let activeGame = false;
+let gameSize = 3;
 
-let boardArray = [
-  $('#cell-0').text(),
-  $('#cell-1').text(),
-  $('#cell-2').text(),
-  $('#cell-3').text(),
-  $('#cell-4').text(),
-  $('#cell-5').text(),
-  $('#cell-6').text(),
-  $('#cell-7').text(),
-  $('#cell-8').text(),
-];
+let boardDict = {
+    'cell-00': $('#cell-00').text(),
+    'cell-01': $('#cell-01').text(),
+    'cell-02': $('#cell-02').text(),
+    'cell-10': $('#cell-10').text(),
+    'cell-11': $('#cell-11').text(),
+    'cell-12': $('#cell-12').text(),
+    'cell-20': $('#cell-20').text(),
+    'cell-21': $('#cell-21').text(),
+    'cell-22': $('#cell-22').text(),
+};
 
 module.exports = {
   currentPlayer,
@@ -40,6 +42,8 @@ module.exports = {
   otherSymbol,
   symbols,
   players,
-  boardArray,
+  boardDict,
   gameOver,
+  activeGame,
+  gameSize,
 };

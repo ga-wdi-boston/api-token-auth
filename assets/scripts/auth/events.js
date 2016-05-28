@@ -6,21 +6,11 @@ const api = require('./api');
 const ui = require('./ui');
 const game_logic = require('../game/game_logic');
 
-let symbols = game_logic.symbols;
-let players = game_logic.players;
-let currentPlayer = game_logic.currentPlayer;
-let currentSymbol = game_logic.currentSymbol;
-// let otherPlayer = game_logic.otherPlayer;
-// let otherSymbol = game_logic.otherSymbol;
-let boardArray = game_logic.boardArray;
-let gameOver = game_logic.gameOver;
-
 const onSignUp = function(event){
   event.preventDefault();
   let data = getFormFields(event.target);
   api.signUp(data)
   .done(ui.success)
-  .then(ui.showBoard)
   .fail(ui.failure);
 };
 
@@ -53,8 +43,23 @@ const onChangePassword = function(event){
 const onNewGame = function(event){
   event.preventDefault();
 
-  $('#player-turn').text(currentPlayer + "'s Turn!");
+  game_logic.gameOver = false;
+
+  $('.table-section').hide();
+  $('.hideable').hide();
+
+  $('#player-turn').text(game_logic.currentPlayer + "'s Turn!");
   $('.cell').text('');
+
+  game_logic.activeGame = true;
+
+  game_logic.CurrentPlayer = game_logic.players[0];
+  game_logic.otherPlayer = game_logic.players[1];
+  game_logic.currentSymbol = game_logic.symbols[game_logic.currentPlayer];
+  game_logic.otherSymbol = game_logic.symbols[game_logic.otherPlayer];
+
+  $('.table-section').show();
+  $('.hideable').show();
 
   api.newGame()
   .done(ui.success)
@@ -80,9 +85,44 @@ const onGetDoneGames = function(event){
   .fail(ui.failure);
 };
 
+const checkSame = function(dict){
+  let checkVal = $(dict[0]).text();
+  console.log('checkVal: ', checkVal);
+
+  if(checkVal === ""){
+
+    return false;
+
+  }else{
+
+    for(let i = 0, max = game_logic.gameSize; i < max; i++){
+      if($(dict[i]).text() !== checkVal){
+        return false;
+      }
+    }
+  }
+  return true;
+};
+
+const checkGame = function(){
+  let gameOver = false;
+  if(
+    checkSame($(".row-0")) === true ||
+    checkSame($(".col-0")) === true ||
+    checkSame($(".row-1")) === true ||
+    checkSame($(".col-1")) === true ||
+    checkSame($(".row-2")) === true ||
+    checkSame($(".col-2")) === true
+  ){
+    gameOver = true;
+  }
+  console.log('gameOver: ', gameOver);
+  return gameOver;
+};
+
 const onSetCellValue = function(){
 
-  if(gameOver === false){
+  if(game_logic.gameOver === false){
 
     let currentVal = $(this).text();
 
@@ -92,29 +132,45 @@ const onSetCellValue = function(){
 
     } else {
 
-      $(this).text(currentSymbol);
-      game_logic.boardArray[0] = currentSymbol;
-      boardArray[0] = currentSymbol;
+      $(this).text(game_logic.currentSymbol);
+      let clickedCell = this.id;
 
-      if(currentPlayer === players[0]){
-        game_logic.currentPlayer = players[1];
-        currentPlayer = players[1];
-        game_logic.currentSymbol = symbols[currentPlayer];
-        currentSymbol = symbols[currentPlayer];
-      }else if (currentPlayer === players[1]){
-        game_logic.currentPlayer = players[0];
-        currentPlayer = players[0];
-        game_logic.currentSymbol = symbols[currentPlayer];
-        currentSymbol = symbols[currentPlayer];
-      }else{
-        console.log('There is an error with toggling currentPlayer!');
-        return false;
+      game_logic.boardDict[clickedCell] = game_logic.currentSymbol;
+      game_logic.boardDict[clickedCell] = game_logic.currentSymbol;
+
+      game_logic.gameOver = checkGame();
+      if(game_logic.gameOver === false){
+
+        if(game_logic.currentPlayer === game_logic.players[0]){
+
+          game_logic.currentPlayer = game_logic.players[1];
+          game_logic.currentSymbol = game_logic.symbols[game_logic.players[1]];
+          game_logic.otherPlayer = game_logic.players[0];
+          game_logic.otherSymbol = game_logic.symbols[game_logic.players[0]];
+
+        }else if (game_logic.currentPlayer === game_logic.players[1]){
+
+          game_logic.currentPlayer = game_logic.players[0];
+          game_logic.currentSymbol = game_logic.symbols[game_logic.players[0]];
+          game_logic.otherPlayer = game_logic.players[1];
+          game_logic.otherSymbol = game_logic.symbols[game_logic.players[1]];
+
+        }else{
+          console.log('There is an error with toggling currentPlayer!');
+          return false;
+        }
+
+        console.log('boardDict: ', game_logic.boardDict);
+        $('#player-turn').text(game_logic.currentPlayer + "'s Turn!");
+        return true;
+        }
       }
-      $('#player-turn').text(currentPlayer + "'s Turn!");
-      return true;
-    }
-  } else if (gameOver !== false){
+  } else if (game_logic.gameOver === true){
     console.log('The game is over! Start a new game!');
+    $('.table-section').hide();
+    alert('Game Over!');
+    $('.game-over-section').show();
+
   } else{
     console.log('There is a weird error with gameOver');
   }
@@ -137,7 +193,6 @@ const addHandlers = () => {
   $('#new-game').on('submit', onNewGame);
   $('#get-games').on('submit', onGetGames);
   $('#get-done-games').on('submit', onGetDoneGames);
-
 
   $('#get-done-games').on('submit', onGetDoneGames);
 

@@ -56,7 +56,7 @@
         <h2>Player Stats</h2>
       </div>
 
-      <div id="player-stats" class="hideable">
+      <div id="player-stats" class="hideable stats-table">
         <table class="table table-bordered hideable">
           <tr>
             <th>Player ID</th>
@@ -91,47 +91,66 @@
             <input type="submit" name="submit" value="Refresh Done Games!">
         </form>
 
+        <form class="game-setting" id="game-board-size">
+            <br>
+            <h4>
+              Board Size (default = 3)
+            </h4>
+            <!-- <input type="number" name="board-size" value="3" placeholder="board size"> -->
+        </form>
+
       </div>
 
-      <br><br><br>
+      <br><br>
 
-      <div>
-        <h2 id="game-board-section-title" class="hideable">Game Board</h2>
+      <div class="game-over-section">
+        <h4>
+          Start a game.
+        </h4>
       </div>
 
-      <div>
-        <h3 id="instructructions-title" class="hideable">Instructions</h3>
-        <p id="instructructions" class="hideable">Lorem ipsum HOW TO PLAY</p>
+      <div class="game-section">
+        <div>
+          <h2 id="game-board-section-title" class="hideable">Game Board</h2>
+        </div>
+
+        <div>
+          <h3 id="instructructions-title" class="hideable">Instructions</h3>
+          <p id="instructructions" class="hideable">
+            Click a box when it is your turn.
+            Try to connect three in a row to win.
+          </p>
+        </div>
+
+        <div id="table-container" class="hideable">
+
+          <h3 id="player-turn"></h3>
+
+          <table id="game-board" class="table table-bordered game-table">
+
+            <tr>
+              <td id="cell-00"  class="cell row-0 col-0"></td>
+              <td id="cell-01"  class="cell row-0 col-1"></td>
+              <td id="cell-02"  class="cell row-0 col-2"></td>
+            </tr>
+
+            <tr>
+              <td id="cell-10"  class="cell row-1 col-0"></td>
+              <td id="cell-11"  class="cell row-1 col-1"></td>
+              <td id="cell-12"  class="cell row-1 col-2"></td>
+            </tr>
+
+            <tr>
+              <td id="cell-20"  class="cell row-2 col-0"></td>
+              <td id="cell-21"  class="cell row-2 col-1"></td>
+              <td id="cell-22"  class="cell row-2 col-2"></td>
+            </tr>
+
+          </table>
+        </div>
       </div>
 
-      <div id="table-container" class="hideable">
-
-        <h3 id="player-turn"></h3>
-
-        <table id="game-board" class="table table-bordered">
-
-          <tr>
-            <td id="cell-0"  class="cell"></td>
-            <td id="cell-1"  class="cell"></td>
-            <td id="cell-2"  class="cell"></td>
-          </tr>
-
-          <tr>
-            <td id="cell-3"  class="cell"></td>
-            <td id="cell-4"  class="cell"></td>
-            <td id="cell-5"  class="cell"></td>
-          </tr>
-
-          <tr>
-            <td id="cell-6"  class="cell"></td>
-            <td id="cell-7"  class="cell"></td>
-            <td id="cell-8"  class="cell"></td>
-          </tr>
-
-        </table>
-      </div>
-
-      <br><br><br>
+        <br><br><br>
 
     </body>
 </html>
