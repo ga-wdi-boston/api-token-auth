@@ -1,7 +1,7 @@
 'use strict';
 
 const app = require('../app.js');
-const game_logic = require('../game/game_logic.js');
+const gameLogic = require('../game/gameLogic.js');
 
 const success = (data) => {
   if(data){
@@ -67,14 +67,14 @@ const newGame = function(){
   $('.hideable').hide();
   $('.game-over-section').hide();
 
-  game_logic.gameOver = false;
-  game_logic.activeGame = true;
-  game_logic.currentPlayer = game_logic.players[0];
-  game_logic.otherPlayer = game_logic.players[1];
-  game_logic.currentSymbol = game_logic.symbols[game_logic.currentPlayer];
-  game_logic.otherSymbol = game_logic.symbols[game_logic.otherPlayer];
+  gameLogic.gameOver = false;
+  gameLogic.activeGame = true;
+  gameLogic.currentPlayer = gameLogic.players[0];
+  gameLogic.otherPlayer = gameLogic.players[1];
+  gameLogic.currentSymbol = gameLogic.symbols[gameLogic.currentPlayer];
+  gameLogic.otherSymbol = gameLogic.symbols[gameLogic.otherPlayer];
 
-  $('#player-turn').text(game_logic.currentPlayer + "'s Turn!");
+  $('#player-turn').text(gameLogic.currentPlayer + "'s Turn!");
   $('.cell').text('');
 
   $('.table-section').show();

@@ -3,17 +3,17 @@
 const getFormFields = require('../../../lib/get-form-fields');
 const api = require('./api');
 const ui = require('./ui');
-const game_logic = require('../game/game_logic');
-const game_checks = require('../game/game_checks');
+const gameLogic = require('../game/gameLogic');
+const gameChecks = require('../game/gameChecks');
 
-let currentPlayer = game_logic.currentPlayer;
-let currentSymbol = game_logic.currentSymbol;
-let otherPlayer = game_logic.otherPlayer;
-let otherSymbol = game_logic.otherPlayer;
+let currentPlayer = gameLogic.currentPlayer;
+let currentSymbol = gameLogic.currentSymbol;
+let otherPlayer = gameLogic.otherPlayer;
+let otherSymbol = gameLogic.otherPlayer;
 
 const onSignUp = function(event){
   event.preventDefault();
-  game_logic.activeGame = false;
+  gameLogic.activeGame = false;
 
   let data = getFormFields(event.target);
   api.signUp(data)
@@ -24,7 +24,7 @@ const onSignUp = function(event){
 
 const onSignIn = function(event){
   event.preventDefault();
-  game_logic.activeGame = false;
+  gameLogic.activeGame = false;
 
   let data = getFormFields(event.target);
   api.signIn(data)
@@ -35,7 +35,7 @@ const onSignIn = function(event){
 
 const onSignOut = function(event){
   event.preventDefault();
-  game_logic.activeGame = false;
+  gameLogic.activeGame = false;
 
   api.signOut()
   .done(ui.success)
@@ -92,7 +92,7 @@ const onSetCellValue = function(){
 
   // you can only go if there is an active, non-over game
   // eventually maybe these variables should be combined into one
-  if(game_logic.gameOver === false && game_logic.activeGame === true){
+  if(gameLogic.gameOver === false && gameLogic.activeGame === true){
 
     // the clicked cell and the value of that cell
     let currentVal = $(this).text();
@@ -109,20 +109,22 @@ const onSetCellValue = function(){
       $(this).text(currentSymbol);
 
       // set the new value in the model
-      game_logic.boardDict[clickedCell] = currentSymbol;
+      gameLogic.boardDict[clickedCell] = currentSymbol;
 
       // check if the game is over
-      game_logic.gameOver = game_checks.checkGame();
+      gameLogic.gameOver = gameChecks.checkGame();
 
-      if(game_logic.gameOver === false){
+      if(gameLogic.gameOver === false){
 
         // swap players
+
         console.log("current: ",currentPlayer,currentSymbol);
-        let NewPlayersSymbols = game_logic.swapPlayers();
+        let NewPlayersSymbols = gameLogic.swapPlayers();
         currentPlayer = NewPlayersSymbols[0];
-        otherPlayer = NewPlayersSymbols[1];
-        currentSymbol = NewPlayersSymbols[2];
-        otherSymbol  = NewPlayersSymbols[3];
+        otherPlayer = NewPlayersSymbols[0];
+        currentSymbol = NewPlayersSymbols[0];
+        otherSymbol  = NewPlayersSymbols[0];
+
         console.log("current: ",currentPlayer,currentSymbol);
 
 
@@ -137,14 +139,14 @@ const onSetCellValue = function(){
         $('.game-over-section').show();
       }
     }
-  } else if (game_logic.gameOver === true){
+  } else if (gameLogic.gameOver === true){
 
     console.log('The game is over! Start a new game!');
     $('.table-section').hide();
     alert('Game Over!');
     $('.game-over-section').show();
 
-  } else if(game_logic.activeGame === false){
+  } else if(gameLogic.activeGame === false){
     console.log('You need to activate or start a game!');
 
   } else {

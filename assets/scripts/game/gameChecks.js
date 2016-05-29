@@ -1,7 +1,7 @@
 'use strict';
 
 // imports
-const game_logic = require('./game_logic.js');
+const gameLogic = require('./gameLogic.js');
 
 // check whether dict values are the same
 // the keys have to be 0, 1, 2 etc.
@@ -15,7 +15,7 @@ const checkSame = function(dict){
 
   }else{
 
-    for(let i = 0, max = game_logic.gameSize; i < max; i++){
+    for(let i = 0, max = gameLogic.gameSize; i < max; i++){
       if($(dict[i]).text() !== checkVal){
         return false;
       }
