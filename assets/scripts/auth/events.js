@@ -121,9 +121,9 @@ const onSetCellValue = function(){
         console.log("current: ",currentPlayer,currentSymbol);
         let NewPlayersSymbols = gameLogic.swapPlayers();
         currentPlayer = NewPlayersSymbols[0];
-        otherPlayer = NewPlayersSymbols[0];
-        currentSymbol = NewPlayersSymbols[0];
-        otherSymbol  = NewPlayersSymbols[0];
+        otherPlayer = NewPlayersSymbols[1];
+        currentSymbol = NewPlayersSymbols[2];
+        otherSymbol  = NewPlayersSymbols[3];
 
         console.log("current: ",currentPlayer,currentSymbol);
 
