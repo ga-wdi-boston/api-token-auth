@@ -66,7 +66,7 @@ const checkGame = function(){
   }
 
   if(gameOver === true){
-    alert('Game Over!');
+    $('#player-turn').text('Game over!');
   }
 
   console.log('gameOver: ', gameOver);

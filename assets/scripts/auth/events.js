@@ -134,8 +134,8 @@ const onSetCellValue = function(){
 
       } else{
         console.log('The game is over! Start a new game!');
+        $('#player-turn').text('Game over! ' + currentPlayer + ' Wins!');
         $('.table-section').hide();
-        alert('Game Over!');
         $('.game-over-section').show();
       }
     }
@@ -143,7 +143,7 @@ const onSetCellValue = function(){
 
     console.log('The game is over! Start a new game!');
     $('.table-section').hide();
-    alert('Game Over!');
+    $('#player-turn').text('Game over! Start a new Game!');
     $('.game-over-section').show();
 
   } else if(gameLogic.activeGame === false){
