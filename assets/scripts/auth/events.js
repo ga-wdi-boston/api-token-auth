@@ -88,6 +88,15 @@ const onGetDoneGames = function(event){
 
 };
 
+const onJoinGame = function(event){
+  event.preventDefault();
+  let data = getFormFields(event.target);
+
+  api.joinGame(data)
+  .done(ui.success)
+  .fail(ui.failure);
+};
+
 const onSetCellValue = function(){
 
   // you can only go if there is an active, non-over game
@@ -110,7 +119,10 @@ const onSetCellValue = function(){
 
       // set the new value in the model
       gameLogic.boardDict[clickedCell] = currentSymbol;
+      let modelGameIndex = gameLogic.boardTrans.indexOf(clickedCell);
+      gameLogic.newGame.cells[modelGameIndex] = currentSymbol;
       gameLogic.updateGameInfo();
+      console.log('current game: ', gameLogic.newGame);
 
       // check if the game is over
       gameLogic.gameOver = gameChecks.checkGame();
@@ -168,6 +180,7 @@ const addHandlers = () => {
   $('#new-game').on('submit', onNewGame);
   $('#get-games').on('submit', onGetGames);
   $('#get-done-games').on('submit', onGetDoneGames);
+  $('#join-game').on('submit', onJoinGame);
 
   //
   // table cells

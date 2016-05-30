@@ -1,6 +1,7 @@
 'use strict';
 
 const app = require('../app.js');
+const gameLogic = require('../game/gameLogic');
 
 // create new user
 const signUp = function(data){
@@ -79,6 +80,27 @@ const showOverGames = function(){
   });
 };
 
+const joinGame = function(){
+  return $.ajax({
+    url: app.host + '/games:' + gameLogic.newGame.id,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token='+ app.user.token,
+    },
+  });
+};
+
+const updateGame = function(data){
+  return $.ajax({
+    url: app.host + '/games:' + gameLogic.newGame.id,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token='+ app.user.token,
+    },
+    data: data,
+  });
+};
+
 module.exports = {
   signUp,
   signIn,
@@ -87,4 +109,6 @@ module.exports = {
   newGame,
   showGames,
   showOverGames,
+  joinGame,
+  updateGame,
 };

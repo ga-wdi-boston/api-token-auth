@@ -31,16 +31,28 @@ let newGame = {
 };
 
 let boardDict = {
-    'cell-00': '',
-    'cell-01': '',
-    'cell-02': '',
-    'cell-10': '',
-    'cell-11': '',
-    'cell-12': '',
-    'cell-20': '',
-    'cell-21': '',
-    'cell-22': '',
+  'cell-00': '',
+  'cell-01': '',
+  'cell-02': '',
+  'cell-10': '',
+  'cell-11': '',
+  'cell-12': '',
+  'cell-20': '',
+  'cell-21': '',
+  'cell-22': '',
 };
+
+let boardTrans = [
+  'cell-00',
+  'cell-01',
+  'cell-02',
+  'cell-10',
+  'cell-11',
+  'cell-12',
+  'cell-20',
+  'cell-21',
+  'cell-22'
+];
 
 const swapPlayers = function(){
 
@@ -98,4 +110,5 @@ module.exports = {
   gameSize,
   swapPlayers,
   updateGameInfo,
+  boardTrans,
 };
