@@ -110,6 +110,7 @@ const onSetCellValue = function(){
 
       // set the new value in the model
       gameLogic.boardDict[clickedCell] = currentSymbol;
+      gameLogic.updateGameInfo();
 
       // check if the game is over
       gameLogic.gameOver = gameChecks.checkGame();

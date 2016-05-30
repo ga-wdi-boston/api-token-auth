@@ -67,9 +67,8 @@ const newGame = function(data){
   $('.hideable').hide();
   $('.game-over-section').hide();
 
-  console.log('new game: ', gameLogic.newGame);
+  // instantiate new game
   gameLogic.newGame = new games.game(gameData);
-  console.log('new game: ', gameLogic.newGame);
 
   gameLogic.gameOver = gameLogic.newGame.over;
   gameLogic.activeGame = true;
@@ -80,6 +79,8 @@ const newGame = function(data){
 
   $('#player-turn').text(gameLogic.currentPlayer + "'s Turn!");
   $('.cell').text('');
+
+  gameLogic.updateGameInfo();
 
   $('.table-section').show();
   $('.hideable').show();

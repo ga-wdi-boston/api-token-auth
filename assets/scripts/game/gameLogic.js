@@ -40,15 +40,6 @@ let boardDict = {
     'cell-20': '',
     'cell-21': '',
     'cell-22': '',
-    // 'cell-00': $('#cell-00').text(),
-    // 'cell-01': $('#cell-01').text(),
-    // 'cell-02': $('#cell-02').text(),
-    // 'cell-10': $('#cell-10').text(),
-    // 'cell-11': $('#cell-11').text(),
-    // 'cell-12': $('#cell-12').text(),
-    // 'cell-20': $('#cell-20').text(),
-    // 'cell-21': $('#cell-21').text(),
-    // 'cell-22': $('#cell-22').text(),
 };
 
 const swapPlayers = function(){
@@ -81,6 +72,17 @@ const swapPlayers = function(){
   return NewPlayersSymbols;
 };
 
+const updateGameInfo = function(){
+
+  $("#game-id-data").text(newGame.id);
+  $("#game-cells-data").text(newGame.cells);
+  $("#game-over-data").text(newGame.over);
+  $("#player-x-data").text(newGame.player_x);
+  $("#player-o-data").text(newGame.player_o);
+
+  return true;
+};
+
 
 module.exports = {
   currentPlayer,
@@ -95,4 +97,5 @@ module.exports = {
   gameOver,
   gameSize,
   swapPlayers,
+  updateGameInfo,
 };
