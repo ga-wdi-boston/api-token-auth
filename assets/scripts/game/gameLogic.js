@@ -22,6 +22,14 @@ let activeGame = false;
 let gameOver = false;
 let gameSize = 3;
 
+let newGame = {
+  id: null,
+  cells: null,
+  over: null,
+  player_x: null,
+  player_o: null,
+};
+
 let boardDict = {
     'cell-00': '',
     'cell-01': '',
@@ -73,6 +81,7 @@ const swapPlayers = function(){
   return NewPlayersSymbols;
 };
 
+
 module.exports = {
   currentPlayer,
   currentSymbol,
@@ -80,6 +89,7 @@ module.exports = {
   otherSymbol,
   symbols,
   players,
+  newGame,
   boardDict,
   activeGame,
   gameOver,

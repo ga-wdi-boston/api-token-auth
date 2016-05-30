@@ -2,6 +2,7 @@
 
 const app = require('../app.js');
 const gameLogic = require('../game/gameLogic.js');
+const games = require('../game/games.js');
 
 const success = (data) => {
   if(data){
@@ -27,12 +28,10 @@ const signOutSuccess = function(){
 };
 
 const showBoard = function(){
-
   $('.hideable').show();
 };
 
 const hideBoard = function(){
-
   $('.table-section').hide();
   $('.hideable').hide();
 };
@@ -59,16 +58,23 @@ const updateFinishedGames = function(data){
     }
   };
 
-const newGame = function(){
+const newGame = function(data){
+
+  // data about new game
+  let gameData = data.game;
 
   $('.table-section').hide();
   $('.hideable').hide();
   $('.game-over-section').hide();
 
-  gameLogic.gameOver = false;
+  console.log('new game: ', gameLogic.newGame);
+  gameLogic.newGame = new games.game(gameData);
+  console.log('new game: ', gameLogic.newGame);
+
+  gameLogic.gameOver = gameLogic.newGame.over;
   gameLogic.activeGame = true;
-  gameLogic.currentPlayer = gameLogic.players[0];
-  gameLogic.otherPlayer = gameLogic.players[1];
+  gameLogic.currentPlayer = gameLogic.newGame.player_x;
+  gameLogic.otherPlayer = gameLogic.newGame.player_o;
   gameLogic.currentSymbol = gameLogic.symbols[gameLogic.currentPlayer];
   gameLogic.otherSymbol = gameLogic.symbols[gameLogic.otherPlayer];
 
