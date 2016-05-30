@@ -27,18 +27,17 @@ const signOutSuccess = function(){
 };
 
 const showBoard = function(){
-  console.log('board shown!');
+
   $('.hideable').show();
 };
 
 const hideBoard = function(){
-  console.log('board hidden!');
+
   $('.table-section').hide();
   $('.hideable').hide();
 };
 
 const updateGames = function(data){
-  console.log('updating games!');
 
   // set objects
   if(data !== undefined && data.games !== undefined){
@@ -50,7 +49,6 @@ const updateGames = function(data){
 };
 
 const updateFinishedGames = function(data){
-    console.log('updating finished games!');
 
     // set objects
     if(data !== undefined && data.games !== undefined){
