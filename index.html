@@ -124,7 +124,30 @@
 
         <div id="table-container" class="hideable">
 
-          <h3 id="player-turn"></h3>
+          <h3 id="current-game">Game Information</h3>
+
+          <table id="current-game-info" class="table table-bordered game-table">
+
+            <tr>
+              <th id="game-id-header"  class="game-info-header">ID</th>
+              <th id="game-cells-header"  class="game-info-header">Cells</th>
+              <th id="game-over-header"  class="game-info-header">Game Over</th>
+              <th id="player-x-header"  class="game-info-header">Player X</th>
+              <th id="player-o-header"  class="game-info-header">Player O</th>
+            </tr>
+
+            <tr>
+              <td id="game-id-data"  class="game-info-cell"></td>
+              <td id="game-cells-data"  class="game-info-cell"></td>
+              <td id="game-over-data"  class="game-info-cell"></td>
+              <td id="player-x-data"  class="game-info-cell"></td>
+              <td id="player-o-data"  class="game-info-cell"></td>
+            </tr>
+
+          </table>
+
+          <h3 id="game-board-label">Game Board</h3>
+          <h4 id="player-turn"></h4>
 
           <table id="game-board" class="table table-bordered game-table">
 

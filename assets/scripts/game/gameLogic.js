@@ -44,7 +44,6 @@ let boardDict = {
 };
 
 const swapPlayers = function(){
-  console.log('swapping players.');
 
   let NewPlayersSymbols = [currentPlayer, otherPlayer, currentSymbol, otherSymbol];
 
