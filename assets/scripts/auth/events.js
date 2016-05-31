@@ -122,6 +122,9 @@ const onSetCellValue = function(){
       let modelGameIndex = gameLogic.boardTrans.indexOf(clickedCell);
       gameLogic.newGame.cells[modelGameIndex] = currentSymbol;
       gameLogic.updateGameInfo();
+
+      api.updateGame(gameLogic.gameStatus);
+
       console.log('current game: ', gameLogic.newGame);
 
       // check if the game is over

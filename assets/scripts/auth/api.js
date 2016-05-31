@@ -82,17 +82,18 @@ const showOverGames = function(){
 
 const joinGame = function(){
   return $.ajax({
-    url: app.host + '/games:' + gameLogic.newGame.id,
+    url: app.host + '/games/' + gameLogic.newGame.id,
     method: 'PATCH',
     headers: {
       Authorization: 'Token token='+ app.user.token,
     },
+    data: '{}',
   });
 };
 
 const updateGame = function(data){
   return $.ajax({
-    url: app.host + '/games:' + gameLogic.newGame.id,
+    url: app.host + '/games/' + gameLogic.newGame.id,
     method: 'PATCH',
     headers: {
       Authorization: 'Token token='+ app.user.token,

@@ -54,6 +54,20 @@ let boardTrans = [
   'cell-22'
 ];
 
+// json for game update
+let gameStatus = [
+  '{',
+  '"game": {',
+    '"cell": {',
+      '"index": 0',
+      '"value": "x"',
+    '},',
+    '"over": false',
+  '}',
+'}'
+].join('');
+console.log('gameStatus: ', gameStatus);
+
 const swapPlayers = function(){
 
   let NewPlayersSymbols = [currentPlayer, otherPlayer, currentSymbol, otherSymbol];
@@ -111,4 +125,5 @@ module.exports = {
   swapPlayers,
   updateGameInfo,
   boardTrans,
+  gameStatus,
 };
