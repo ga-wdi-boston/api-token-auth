@@ -1,26 +1,192 @@
 <!DOCTYPE html>
 <html>
-    <head>
-      <title>Example</title>
 
+    <head>
+      <title>Tic Tac Toe</title>
       <script src="vendor.bundle.js" type="text/javascript" charset="utf-8" defer></script>
       <script src="bundle.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
-    <body class="container-fluid">
-      <form id="sign-up">
-        <fieldset>
-          <legend>Sign up!</legend>
-          <input type="submit" name="submit" value="Sign up!">
-        </fieldset>
-      </form>
-      <h1>Example</h1>
 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-      eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-      minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-      ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-      est laborum.</p>
+    <body class="container-fluid">
+
+      <div>
+        <h1 id="page-title">Tic Tac Toe</h1>
+      </div>
+
+      <div id="user-options">
+        <form id="sign-up">
+          <fieldset>
+            <legend>Sign up!</legend>
+            <input type="text" name="credentials[email]" placeholder="email">
+            <input type="password" name="credentials[password]" placeholder="password">
+            <input type="password" name="credentials[password_confirmation]" placeholder="password confirm">
+            <input type="submit" name="submit" value="Sign up!">
+          </fieldset>
+        </form>
+
+        <form id="sign-in">
+          <fieldset>
+            <legend>Sign in!</legend>
+            <input type="text" name="credentials[email]" placeholder="email">
+            <input type="password" name="credentials[password]" placeholder="password">
+            <input type="submit" name="submit" value="Sign in!">
+          </fieldset>
+        </form>
+
+        <form id="sign-out" class="hideable">
+          <fieldset>
+            <legend>Sign out!</legend>
+            <input type="submit" name="submit" value="Sign out!">
+          </fieldset>
+        </form>
+
+        <form id="change-password" class="hideable">
+          <fieldset>
+            <legend>Change Password</legend>
+            <input type="text" name="passwords[old]" placeholder="old password">
+            <input type="text" name="passwords[new]" placeholder="new password">
+            <input type="submit" name="submit" value="Change Password">
+          </fieldset>
+        </form>
+      </div>
+
+      <br><br>
+
+      <div class="hideable">
+        <h2>Player Stats</h2>
+      </div>
+
+      <div id="player-stats" class="hideable stats-table">
+        <table class="table table-bordered hideable">
+          <tr>
+            <th>Player ID</th>
+            <th>Games</th>
+            <th>Finished Games</th>
+          </tr>
+          <tr>
+            <td id="stats-player-id"></td>
+            <td id="stats-games"></td>
+            <td id="stats-finished-games"></td>
+          </tr>
+        </table>
+      </div>
+
+      <br>
+
+      <div class="hideable">
+        <h2>Game Management</h2>
+      </div>
+
+      <div id="game-management" class="hideable">
+
+        <form class="game-mgmt-button" id="new-game">
+            <input type="submit" name="submit" value="New Game!">
+        </form>
+
+        <form class="game-mgmt-button" id="get-games">
+            <input type="submit" name="submit" value="Refresh Games!">
+        </form>
+
+        <form class="game-mgmt-button hideable" id="get-done-games">
+            <input type="submit" name="submit" value="Refresh Done Games!">
+        </form>
+
+        <form class="game-setting" id="game-board-size">
+            <br>
+            <h4>
+              Board Size (default = 3)
+            </h4>
+            <!-- <input type="number" name="board-size" value="3" placeholder="board size"> -->
+        </form>
+
+      </div>
+
+      <br>
+
+      <div>
+        <form id="join-game">
+          <fieldset>
+            <legend>Join Game!</legend>
+            <input type="text" name="credentials[email]" placeholder="email">
+            <input type="password" name="credentials[password]" placeholder="password">
+            <input type="submit" name="submit" value="Join Game!">
+          </fieldset>
+        </form>
+      </div>
+
+      <br>
+
+      <div class="game-over-section">
+        <h4>
+          Start a game.
+        </h4>
+      </div>
+
+      <div class="game-section">
+        <div>
+          <h2 id="game-board-section-title" class="hideable">Game Board</h2>
+        </div>
+
+        <div>
+          <h3 id="instructructions-title" class="hideable">Instructions</h3>
+          <p id="instructructions" class="hideable">
+            Click a box when it is your turn.
+            Try to connect three in a row to win.
+          </p>
+        </div>
+
+        <div id="table-container" class="hideable">
+
+          <h3 id="current-game">Game Information</h3>
+
+          <table id="current-game-info" class="table table-bordered">
+
+            <tr>
+              <th id="game-id-header"  class="game-info-header">ID</th>
+              <th id="game-cells-header"  class="game-info-header">Cells</th>
+              <th id="game-over-header"  class="game-info-header">Game Over</th>
+              <th id="player-x-header"  class="game-info-header">Player_X</th>
+              <th id="player-o-header"  class="game-info-header">Player_O</th>
+            </tr>
+
+            <tr>
+              <td id="game-id-data"  class="game-info-cell"></td>
+              <td id="game-cells-data"  class="game-info-cell"></td>
+              <td id="game-over-data"  class="game-info-cell"></td>
+              <td id="player-x-data"  class="game-info-cell"></td>
+              <td id="player-o-data"  class="game-info-cell"></td>
+            </tr>
+
+          </table>
+
+          <h3 id="game-board-label">Game Board</h3>
+          <h4 id="player-turn"></h4>
+
+          <table id="game-board" class="table table-bordered game-table">
+
+            <tr>
+              <td id="cell-00"  class="cell row-0 col-0"></td>
+              <td id="cell-01"  class="cell row-0 col-1"></td>
+              <td id="cell-02"  class="cell row-0 col-2"></td>
+            </tr>
+
+            <tr>
+              <td id="cell-10"  class="cell row-1 col-0"></td>
+              <td id="cell-11"  class="cell row-1 col-1"></td>
+              <td id="cell-12"  class="cell row-1 col-2"></td>
+            </tr>
+
+            <tr>
+              <td id="cell-20"  class="cell row-2 col-0"></td>
+              <td id="cell-21"  class="cell row-2 col-1"></td>
+              <td id="cell-22"  class="cell row-2 col-2"></td>
+            </tr>
+
+          </table>
+        </div>
+      </div>
+
+        <br><br><br>
+
     </body>
 </html>

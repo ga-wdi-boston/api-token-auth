@@ -1,2 +1,43 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
+
+body {
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+td,
+th {
+  height: 60px;
+  text-align: center;
+  vertical-align: middle;
+  width: 33%;
+}
+
+div {
+  clear: left;
+  margin-left: 20%;
+  width: 60%;
+}
+
+form {
+  margin: 10px;
+}
+
+.game-mgmt-button {
+  float: left;
+}
+
+.game-setting {
+  clear: both;
+}
+
+.game-section {
+  margin-left: 0%;
+  width: 100%;
+}
+
+.game-table {
+  font-size: 1.5em;
+  font-weight: bold;
+}
