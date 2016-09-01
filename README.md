@@ -46,7 +46,7 @@ The operations we'll perform:
 
 ### Registering with the API
 
-#### Demonstration: Follow Along
+#### Follow along: Use an Echo Server to Help Write Code
 
 First we'll test our command against an [echo server](http://httpbin.org/post)
 to make sure we're sending the right data. There's no need to use an actual
