@@ -1,14 +1,17 @@
 ![General Assembly Logo](http://i.imgur.com/ke8USTq.png)
 
-# Using curl and jQuery.ajax to access an authenticated API
+# API Token Authentication
 
 ## Introduction
 
-We'll use `curl` and `$.ajax` with html forms to sign up, sign in, and sign out
- of an API.
-We'll also change our passwords.
-The API uses Token authentication and we'll see how to make authenticated
- request (sign out and change password).
+Using curl and jQuery.ajax to access an authenticated API with html forms to
+sign up, sign in, and sign out of an API. We'll also change our passwords. The
+API uses Token authentication and we'll see how to make authenticated request
+(sign out and change password).
+
+## Prerequisites
+
+-   jquery-ajax-*
 
 ## Objectives
 
@@ -19,12 +22,15 @@ By the end of this, students should be able to:
 
 ## Instructions
 
-Fork, clone, branch, and npm install.
+1.  [Fork and clone](https://github.com/ga-wdi-boston/meta/wiki/ForkAndClone) this
+repository.
+1.  Create a new branch, `training`, for your work.
+1.  Install dependencies with `npm install`.
 
 ## Using web APIs
 
 Web APIs often require some sort of authentication.  The game API requires users
- to register and then login to gain an authentication token.
+to register and then login to gain an authentication token.
 
 We'll use `curl`, `httpbin.org`, and `jQuery.ajax` to explore HTTP further.
 The we'l connect to an authenticated API, [library-api](https://github.com/ga-wdi-boston/library-api).
@@ -40,20 +46,18 @@ The operations we'll perform:
 
 ### Registering with the API
 
-#### Demonstration
+#### Demo
 
 First we'll test our command against an echo server to make sure we're sending
- the right data.
-There's no need to use an actual e-mail address and don't use anything you might
- want to actually use as a password.
+the right data. There's no need to use an actual e-mail address and don't use
+anything you might want to actually use as a password.
 
 We'll use `scripts/sign-up[-json].sh` to run curl, first sending JSON then
- sending data the way the browser does by default.
-We'll see how the server treats both ways of sending data (it's all just
- strings) in a similar way.
+sending data the way the browser does by default. We'll see how the server
+treats both ways of sending data (it's all just strings) in a similar way.
 
-If we left out the `--include` flag we wouldn't see the response header.
-What's the benefit of using an echo server?
+If we left out the `--include` flag we wouldn't see the response header. What's
+the benefit of using an echo server?
 
 #### Code along
 
@@ -68,7 +72,7 @@ Now let's put code into `assests/scripts/auth/*` to get another "e-mail"
 
 ### Logging into the API
 
-#### Demonstration
+#### Follow along
 
 We'll use `scripts/sign-in-json.sh`.
 
@@ -78,9 +82,8 @@ Now with url encoded data in `scripts/sign-in.sh`.
 
 #### Lab
 
-Add a form to `index.html` and code to `assets/scripts/auth/*` to login to
- the API.
-You may want to start by using the echo service to check your request.
+Add a form to `index.html` and code to `assets/scripts/auth/*` to login to the
+API. You may want to start by using the echo service to check your request.
 
 What should we do with the data returned by the API?
 
@@ -88,14 +91,13 @@ What should we do with the data returned by the API?
 
 #### Code along
 
-We'll use `scripts/change-password[-json].sh` to change a password.
-After that we'll verify that we can no longer authenticate using the old
- password.
+We'll use `scripts/change-password[-json].sh` to change a password. After that
+we'll verify that we can no longer authenticate using the old password.
 
 #### Lab
 
-Add a change password form to `index.html` and code to
- `assets/scripts/auth/*` to change the password.
+Add a change password form to `index.html` and code to `assets/scripts/auth/*`
+to change the password.
 
 ### Signing out
 
@@ -103,13 +105,13 @@ Signing out invalidates the the current token.
 
 #### Code along
 
-We'll use `scripts/sign-out.sh` to sign out of the API.
-We'll verify that the token we used is no longer valid.
+We'll use `scripts/sign-out.sh` to sign out of the API. We'll verify that the
+token we used is no longer valid.
 
 #### Lab
 
-Add a sign out form to `index.html` and code to `assets/scripts/auth/*` to
- sign out of the API.
+Add a sign out form to `index.html` and code to `assets/scripts/auth/*` to sign
+out of the API.
 
 ## Tasks
 
@@ -125,5 +127,6 @@ Developers should run these often!
 
 ## [License](LICENSE)
 
-Source code distributed under the MIT license. Text and other assets copyright
-General Assembly, Inc., all rights reserved.
+-   All content is licensed under a CC­BY­NC­SA 4.0 license.
+-   All software code is licensed under GNU GPLv3. For commercial use or alternative
+licensing, please contact legal@ga.co.
