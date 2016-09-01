@@ -46,11 +46,12 @@ The operations we'll perform:
 
 ### Registering with the API
 
-#### Demo
+#### Demonstration: Follow Along
 
-First we'll test our command against an echo server to make sure we're sending
-the right data. There's no need to use an actual e-mail address and don't use
-anything you might want to actually use as a password.
+First we'll test our command against an [echo server](http://httpbin.org/post)
+to make sure we're sending the right data. There's no need to use an actual
+e-mail address and don't use anything you might want to actually use as a
+password.
 
 We'll use `scripts/sign-up[-json].sh` to run curl, first sending JSON then
 sending data the way the browser does by default. We'll see how the server
@@ -59,28 +60,25 @@ treats both ways of sending data (it's all just strings) in a similar way.
 If we left out the `--include` flag we wouldn't see the response header. What's
 the benefit of using an echo server?
 
-#### Code along
+#### Code along: Write a sign-up script
 
 Next we'll want to actually register with the API.
 
 We'll modify `scripts/sign-up[-json].sh` to connect to the `library-api`.
 
-#### Code along again
+#### Code along: Sign-up from our client
 
-Now let's put code into `assests/scripts/auth/*` to get another "e-mail"
- address registered with the API.  We'll again start with the echo server.
+Now let's put code into `assests/scripts/auth/*` to get another "e-mail" address
+registered with the API.  We'll again start with the echo server.
 
 ### Logging into the API
 
-#### Follow along
+#### Code along: Write a sign-in script
 
-We'll use `scripts/sign-in-json.sh`.
+Now with url encoded data in `scripts/sign-in.sh`, let's sign in to the account
+we just created.
 
-#### Code along
-
-Now with url encoded data in `scripts/sign-in.sh`.
-
-#### Lab
+#### Lab: Sign-in from the client
 
 Add a form to `index.html` and code to `assets/scripts/auth/*` to login to the
 API. You may want to start by using the echo service to check your request.
@@ -89,12 +87,12 @@ What should we do with the data returned by the API?
 
 ### Changing the password
 
-#### Code along
+#### Code along: Write/Execute a change-password scripts
 
 We'll use `scripts/change-password[-json].sh` to change a password. After that
 we'll verify that we can no longer authenticate using the old password.
 
-#### Lab
+#### Lab: Change password from the client
 
 Add a change password form to `index.html` and code to `assets/scripts/auth/*`
 to change the password.
@@ -103,12 +101,12 @@ to change the password.
 
 Signing out invalidates the the current token.
 
-#### Code along
+#### Code along: Write/Execute a sign-out script
 
 We'll use `scripts/sign-out.sh` to sign out of the API. We'll verify that the
 token we used is no longer valid.
 
-#### Lab
+#### Lab: Sign out from the client
 
 Add a sign out form to `index.html` and code to `assets/scripts/auth/*` to sign
 out of the API.
