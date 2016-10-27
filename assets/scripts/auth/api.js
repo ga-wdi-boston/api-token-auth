@@ -1,14 +1,15 @@
 'use strict';
 
-const signUp = (success, failure, data) => {
-  if (Math.random() > 0.5) {
-    success('in signUp');
-  } else {
-    let error = new Error('Random');
-    error.data = data;
-    failure(error);
-  }
-};
+const signUp = (data) =>
+  new Promise(function (resolve, reject) {
+    if (Math.random() > 0.5) {
+      resolve('in signUp');
+    } else {
+      let error = new Error('Random');
+      error.data = data;
+      reject(error);
+    }
+  });
 
 module.exports = {
   signUp,

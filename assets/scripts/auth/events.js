@@ -1,7 +1,6 @@
 'use strict';
 
-const root = '../../..';
-const getFormFields = require(`${root}/lib/get-form-fields`);
+const getFormFields = require(`../../../lib/get-form-fields`);
 
 const api = require('./api');
 const ui = require('./ui');
@@ -9,7 +8,9 @@ const ui = require('./ui');
 const onSignUp = function (event) {
   let data = getFormFields(this);
   event.preventDefault();
-  api.signUp(ui.success, ui.failure, data);
+  api.signUp(data)
+    .then(ui.success)
+    .catch(ui.failure);
 };
 
 const addHandlers = () => {
