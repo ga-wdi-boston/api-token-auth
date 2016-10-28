@@ -1,9 +1,13 @@
 #!/bin/bash
 
-#curl "http://localhost:3000/sign-in" \
-curl "http://httpbin.org/post" \
+# API="http://httpbin.org"
+# URL_PATH="/post"
+API="http://localhost:4741"
+URL_PATH="/sign-in"
+curl "${API}${URL_PATH}" \
   --include \
   --request POST \
-  --data-urlencode ""
+  --data-urlencode "credentials[email]=${EMAIL}" \
+  --data-urlencode "credentials[password]=${PASSWORD}"
 
 echo
