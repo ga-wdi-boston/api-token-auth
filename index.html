@@ -10,11 +10,37 @@
     </head>
     <body class="container-fluid">
       <h1>API Token Auth</h1>
+      <hr>
+      <div id="messages">Not a Message</div>
+      <hr>
       <form id="sign-up">
         <fieldset>
           <legend>Sign up!</legend>
+          <input type="text" name="credentials[email]" placeholder="E-Mail">
+          <input type="password" name="credentials[password]" placeholder="password">
+          <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
           <input type="submit" name="submit" value="Sign up!">
         </fieldset>
+      </form>
+      <form id="sign-in">
+        <fieldset>
+          <legend>Sign in!</legend>
+          <input type="text" name="credentials[email]" placeholder="E-Mail">
+          <input type="password" name="credentials[password]" placeholder="Password">
+          <input type="submit" name="submit" value="Sign in!">
+        </fieldset>
+      </form>
+      <form id="change-password">
+        <fieldset>
+          <legend>Change Password!</legend>
+          <input type="password" name="passwords[old]" placeholder="Old Password">
+          <input type="password" name="passwords[new]" placeholder="New Password">
+          <input type="submit" name="submit" value="Presto Changeo">
+        </fieldset>
+      </form>
+      <form id="sign-out">
+        <legend>sign Out!</legend>
+        <input type="submit" name="submit" value="Sign Out!">
       </form>
 
       <p>Accessing an authenticated API.</p>
