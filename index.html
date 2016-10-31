@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
     <head>
       <title>API Token Auth</title>
@@ -10,13 +10,148 @@
     </head>
     <body class="container-fluid">
       <h1>API Token Auth</h1>
+      <hr>
+      <div id="messages">Not a Message</div>
+      <hr>
       <form id="sign-up">
         <fieldset>
           <legend>Sign up!</legend>
+          <input type="text" name="credentials[email]" placeholder="E-Mail">
+          <input type="password" name="credentials[password]" placeholder="password">
+          <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
           <input type="submit" name="submit" value="Sign up!">
         </fieldset>
+      </form>
+      <form id="sign-in">
+        <fieldset>
+          <legend>Sign in!</legend>
+          <input type="text" name="credentials[email]" placeholder="E-Mail">
+          <input type="password" name="credentials[password]" placeholder="Password">
+          <input type="submit" name="submit" value="Sign in!">
+        </fieldset>
+      </form>
+      <form id="change-password">
+        <fieldset>
+          <legend>Change Password!</legend>
+          <input type="password" name="passwords[old]" placeholder="Old Password">
+          <input type="password" name="passwords[new]" placeholder="New Password">
+          <input type="submit" name="submit" value="Presto Changeo">
+        </fieldset>
+      </form>
+      <form id="sign-out">
+        <legend>sign Out!</legend>
+        <input type="submit" name="submit" value="Sign Out!">
       </form>
 
       <p>Accessing an authenticated API.</p>
     </body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Example</title>
+  <script src="vendor.bundle.js" type="text/javascript" charset="utf-8" defer></script>
+  <script src="bundle.js" type="text/javascript" charset="utf-8" defer></script>
+</head>
+
+<body>
+  <div class="container">
+
+    <!-- nav start -->
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+          <a class="navbar-brand" href="#">Tic-Tacs</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sign Up <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="#">
+                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#sign-up-modal">
+              Sign up  </button>
+                  </a>
+                </li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          </li>
+          </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+      </div>
+      <!-- /.container-fluid -->
+    </nav>
+    <!-- end nav -->
+
+    <h1>Example</h1>
+
+
+
+    <div class="row">
+      <div class="col-xs-4 col-md-4 box">.col-xs-4 .col-md-4</div>
+      <div class="col-xs-4 col-md-4 box">.col-xs-4 .col-md-4</div>
+      <div class="col-xs-4 col-md-4 box">.col-xs-4 .col-md-4</div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-4 col-md-4 box">.col-xs-4 .col-md-4</div>
+      <div class="col-xs-4 col-md-4 box">.col-xs-4 .col-md-4</div>
+      <div class="col-xs-4 col-md-4 box">.col-xs-4 .col-md-4</div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-4 col-md-4 box">.col-xs-4 .col-md-4</div>
+      <div class="col-xs-4 col-md-4 box">.col-xs-4 .col-md-4</div>
+      <div class="col-xs-4 col-md-4 box">.col-xs-4 .col-md-4</div>
+    </div>
+  </div>
+  <!--modle-->
+  <div class="modal fade" id="sign-up-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">SIGN UP</h4>
+        </div>
+
+        <div class="modal-body">
+          <form class="sign-up-form">
+            <div class="form-group">
+              <label>Email address</label>
+              <input type="email" class="form-control" id="sign-up-email" placeholder="Email">
+            </div>
+            <div class="form-group">
+              <label>Password</label>
+              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            </div>
+
+            <button type="submit" class="btn btn-default">Submit</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </form>
+        </div>
+        </div>
+      </div>
+    </div>
+</body>
+
 </html>
