@@ -29,6 +29,8 @@ repository.
 
 ## Using web APIs
 
+Why is authentication an important topic?
+
 Web APIs often require some sort of authentication.  The game API requires users
 to register and then login to gain an authentication token.
 
