@@ -2,13 +2,14 @@ tmp
 dist
 vendor.js
 specs.js
-*bundle.js
+application.js
 _SpecRunner.html
 *.woff2
 *.woff
 *.svg
 *.ttf
 *.eot
+public/
 
 # Created by https://www.gitignore.io/api/node,osx,linux,windows,ruby,node,rails,express,ember
 
@@ -218,6 +219,7 @@ jspm_packages
 ### Rails ###
 *.rbc
 capybara-*.html
+.rspec
 /log
 /tmp
 /db/*.sqlite3
@@ -252,6 +254,7 @@ config/initializers/secret_token.rb
 # if using bower-rails ignore default bower_components path bower.json files
 /vendor/assets/bower_components
 *.bowerrc
+bower.json
 
 # Ignore pow environment settings
 .powenv
