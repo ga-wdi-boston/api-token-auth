@@ -1,14 +1,14 @@
-'use strict';
+'use strict'
 
-const success = (data) => {
-  console.log(data);
-};
+const signInSuccess = (data) => {
+  console.log(data)
+}
 
-const failure = (error) => {
-  console.error(error);
-};
+const signInFailure = (error) => {
+  console.error(error)
+}
 
 module.exports = {
-  failure,
-  success,
-};
+  signInFailure,
+  signInSuccess
+}
