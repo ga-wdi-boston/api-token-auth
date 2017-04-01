@@ -1,14 +1,14 @@
 'use strict'
 
-const signInSuccess = (data) => {
+const signUpSuccess = (data) => {
   console.log(data)
 }
 
-const signInFailure = (error) => {
+const signUpFailure = (error) => {
   console.error(error)
 }
 
 module.exports = {
-  signInFailure,
-  signInSuccess
+  signUpSuccess,
+  signUpFailure
 }

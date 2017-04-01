@@ -1,16 +1,16 @@
-'use strict';
+'use strict'
 
 const signUp = (data) =>
   new Promise(function (resolve, reject) {
     if (Math.random() > 0.5) {
-      resolve('in signUp');
+      resolve('in signUp')
     } else {
-      let error = new Error('Random');
-      error.data = data;
-      reject(error);
+      const error = new Error('Random')
+      error.data = data
+      reject(error)
     }
-  });
+  })
 
 module.exports = {
-  signUp,
-};
+  signUp
+}
