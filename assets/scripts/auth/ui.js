@@ -1,17 +1,17 @@
 'use strict'
 // remove signIn and signOut
-const app = require('../app.js')
+const store = require('../store.js')
 
 // remove me before code-along
 const signInSuccess = (data) => {
-  app.user = data.user
-  console.log(app)
+  store.user = data.user
+  console.log(store)
 }
 
 // remove me before code-along
 const signOutSuccess = () => {
-  app.user = null
-  console.log(app)
+  store.user = null
+  console.log(store)
 }
 
 const changePasswordSuccess = () => {
