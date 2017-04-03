@@ -1,8 +1,7 @@
 #!/bin/bash
-
-#EMAIL=ava@bob.com PASSWORD=hannah scripts/sign-in-json.sh
+#EMAIL=ava@bob.com PASSWORD=hannah scripts/sign-up-with-variables.sh
 API="${API_ORIGIN:-http://localhost:4741}"
-URL_PATH="/sign-in"
+URL_PATH="/sign-up"
 curl "${API}${URL_PATH}" \
   --include \
   --request POST \
@@ -10,7 +9,8 @@ curl "${API}${URL_PATH}" \
   --data '{
     "credentials": {
       "email": "'"${EMAIL}"'",
-      "password": "'"${PASSWORD}"'"
+      "password": "'"${PASSWORD}"'",
+      "password_confirmation": "'"${PASSWORD}"'"
     }
   }'
 
