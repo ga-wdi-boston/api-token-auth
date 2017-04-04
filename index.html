@@ -17,9 +17,38 @@
       <form id="sign-up">
         <fieldset>
           <legend>Sign up!</legend>
+          <input type="text" name="credentials[email]" id="sign-up-email" placeholder="Gimme yo email">
+          <input type="password" name="credentials[password]" id="sign-up-password" placeholder="Password">
+          <input type="password" name="credentials[password_confirmation]" id="sign-up-password-confirmation" placeholder="Password Aga">
           <input type="submit" name="submit" value="Sign up!">
         </fieldset>
       </form>
+
+      <form id="sign-in">
+        <fieldset>
+          <legend>Sign in!</legend>
+          <input type="text" name="credentials[email]" id="sign-in-email" placeholder="Gimme yo email">
+          <input type="password" name="credentials[password]" id="sign-in-password" placeholder="Password">
+          <input type="submit" name="submit" value="Sign in!">
+        </fieldset>
+      </form>
+
+      <form id="sign-out">
+        <fieldset>
+          <legend>Sign Out!</legend>
+          <input type="submit" name="submit" value="Sign out!">
+        </fieldset>
+      </form>
+
+      <form id="change-password">
+        <fieldset>
+          <legend>Sign in!</legend>
+          <input type="text" name="passwords[old]" id="change-password-old" placeholder="Old Password">
+          <input type="password" name="passwords[new]" id="change-password-new" placeholder="New Password">
+          <input type="submit" name="submit" value="Change Password!">
+        </fieldset>
+      </form>
+
 
       <p>Accessing an authenticated API.</p>
     </body>
