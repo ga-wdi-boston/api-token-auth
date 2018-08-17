@@ -102,7 +102,7 @@ to change the password.
 
 ### Signing out
 
-Signing out invalidates the the current token.
+Signing out invalidates the current token.
 
 #### Code along: Write/Execute a sign-out script
 
